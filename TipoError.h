@@ -1,0 +1,1 @@
+typedef enum{ERRORSINTAXIS,ERRORCOMANDO} TipoError;
