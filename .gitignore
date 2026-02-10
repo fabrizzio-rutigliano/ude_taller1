@@ -1,0 +1,49 @@
+# ---- Carpetas de VS Code ----
+.vscode/
+
+# ---- Archivos de datos ----
+*.txt
+
+# ---- Archivos de compilación (C/C++) ----
+*.o
+*.obj
+*.lo
+*.la
+*.al
+*.ko
+*.lai
+*.slo
+
+# ---- Ejecutables ----
+a.out
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+
+# ---- Archivos de depuración ----
+*.dSYM/
+*.stackdump
+
+# ---- Archivos generados por Make ----
+Makefile.in
+Makefile~
+*.deps/
+*.dirstamp
+
+# ---- Archivos temporales ----
+*.tmp
+*.temp
+*.log
+
+# ---- Archivos de editor ----
+*~
+*.swp
+*.swo
+
+# ---- Proyectos de CodeBlocks ----
+*.depend
+*.layout
+*.cbp.save
+*.depend.save
