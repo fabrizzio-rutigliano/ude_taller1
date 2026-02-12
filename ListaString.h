@@ -15,4 +15,6 @@ void listaStringObtener(int indice, ListaString lista, String &str);
 
 void listaStringSplit(String entrada, ListaString &lista);
 
+int listaStringCantElementos(ListaString lista);
+
 
