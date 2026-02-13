@@ -51,10 +51,6 @@ void Levantar_String (String &s, FILE * f);
 
 Boolean strEsEnteroPositivo(String s1);
 
-Boolean strEsVariable(String s1);
-
 Boolean strEsAlfabetico(String s1);
-
-Boolean strEsOperador(String s1);
 
 #endif // STRING_H_INCLUDED

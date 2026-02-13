@@ -7,9 +7,11 @@ typedef struct nodoS{
         
 typedef NodoS * ListaString;
 
-// crearLista
-// insertarElementoLista
-// destruirLista
+void listaStringCrear(ListaString &lista);
+
+void listaStringDestruir(ListaString &lista);
+
+void listaStringInsertarElemento(ListaString &lista, String str);
 
 void listaStringObtener(int indice, ListaString lista, String &str);
 
