@@ -49,8 +49,25 @@ void Levantar_String (String &s, FILE * f);
 
 // ---------- Funciones / Procedimientos Específicos ------------
 
+// Devuelve si s1 representa a un entero
+Boolean strEsEntero(String s1);
+
+// Devuelve si s1 representa a un entero positivo
 Boolean strEsEnteroPositivo(String s1);
 
+// Devuelve si s1 representa a una cadena de caracteres alfabeticas
 Boolean strEsAlfabetico(String s1);
+
+// Elimina los espacios en blanco al principio del string.
+void strEliminarEspaciosInicio( String sin, String &sout);
+
+// Devuelve sOut con la primera palabra de sIn, y devuelve sResto con lo que está después de la palabra inicial.
+void strDividir( String sin, String &sout, String &sresto);
+
+// Valida si s1 es la variable X
+Boolean strEsVariable(String s1);
+
+// Valida si s1 es un operador (+,-,*/)
+Boolean strEsOperador(String s1);
 
 #endif // STRING_H_INCLUDED

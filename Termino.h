@@ -13,13 +13,13 @@ typedef struct{
 
 void terminoCrear(Termino &termino);
 
-Boolean terminoEsEnteroPositivo(String s1);
+int terminoDarValor(Termino termino);
 
-Boolean terminoEsVariable(String s1);
+char terminoDarVariable(Termino termino);
 
-Boolean terminoEsAlfabetico(String s1);
+char terminoDarOperador(Termino termino);
 
-Boolean terminoEsOperador(String s1);
+char terminoDarParentesis(Termino termino);
 
 // Precondición: El archivo viene abierto para escritura.
 void terminoBajar(Termino term, FILE * f );

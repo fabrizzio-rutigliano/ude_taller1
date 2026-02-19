@@ -20,8 +20,7 @@ void arbolExpresionDestruir(ArbolExpresion &arbol);
 /* dados dos árboles y un valor, devolver un nuevo árbol   
 colocando dicho valor como una nueva raíz y a los dos  
 árboles como subárboles de la misma */ 
-void arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d);
-//TODO VER DE DEVOLVER UN ARBOL
+void arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d, ArbolExpresion &arbol);
 
 int arbolExpresionEvaluar(ArbolExpresion arbol, int valor);
 
