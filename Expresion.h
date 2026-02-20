@@ -10,4 +10,4 @@ void expresionCrear(ArbolExpresion arbol, int indice, Expresion &exp);
 
 int expresionDevolverIndice(Expresion exp);
 
-void expresionDevolverArbolExpresion(Expresion expresion, ArbolExpresion &arbolExpresion);
+ArbolExpresion expresionDevolverArbolExpresion(Expresion expresion);

@@ -12,7 +12,7 @@ int expresionDevolverIndice(Expresion exp)
     return exp.indice;
 }
 
-void expresionDevolverArbolExpresion(Expresion expresion, ArbolExpresion &arbolExpresion)
+ArbolExpresion expresionDevolverArbolExpresion(Expresion expresion)
 {
-    arbolExpresion=exp;
+    return expresion.terminos;
 }
