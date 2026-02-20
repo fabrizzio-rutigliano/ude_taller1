@@ -1,2 +1,2 @@
 
-typedef enum{VALOR,VARIABLE,PARENTESIS,OPERADOR} TipoTermino;
+typedef enum{VALOR, VARIABLE, PARENTESIS, OPERADOR} TipoTermino;

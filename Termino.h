@@ -1,3 +1,5 @@
+#ifndef TERMINO_H_INCLUDED
+#define TERMINO_H_INCLUDED
 # include "TipoTermino.h"
 # include "String.h"
 
@@ -11,7 +13,7 @@ typedef struct{
         }dato;
 }Termino;
 
-void terminoCrear(Termino &termino);
+void terminoCrear(TipoTermino tipoTermino, int valor, char otro, Termino &termino);
 
 int terminoDarValor(Termino termino);
 
@@ -26,3 +28,5 @@ void terminoBajar(Termino term, FILE * f );
 
 // Precondición: El archivo viene abierto para lectura.
 void terminoLevantar(Termino &term, FILE * f );
+
+#endif // TERMINO_H_INCLUDED

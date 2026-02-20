@@ -40,6 +40,20 @@ void Levantar_String (String &s, FILE * f);
 
 // ---------- Funciones / Procedimientos Específicos ------------
 
+//Transforma un entero a un String
+void strIntToStr(int num, String &s);
+
+//Transforma un char a un String
+void strCharToStr(char p, String &s);
+
+//Transforma un String a un entero
+//Precondicion el String es un entero
+int strStringToInt(String s);
+
+//Transforma un String en un char
+//Precondicion: S es variable, operador o parentesis
+char strStrToChar(String s);
+
 // Auxiliar para evaluar si es numerico.
 Boolean strEsDigito(char c);
 
