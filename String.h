@@ -70,6 +70,8 @@ Boolean strEsVariable(String s1);
 // Valida si s1 es un operador (+,-,*,/)
 Boolean strEsOperador(String s1);
 
+/* Evalua si el string es un accion inicial de comando válida
+Precondicion: No contiene espacios iniciales*/
 Boolean comandoEsValido(String str);
 
 #endif // STRING_H_INCLUDED
