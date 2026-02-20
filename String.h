@@ -22,22 +22,13 @@ void strCop(String &s1, String s2);
 // Lee el string s desde teclado
 void strScan(String &s);
 
-// Concatena el contenido de S2 al final de S1
-void strCon(String &s1, String s2);
-
-// Intercambia los contenidos de s1 y s2
-void strSwp(String &s1, String &s2);
-
 // Imprime el string s por pantalla
 void strPrint(String s);
-
-// Determina si s1 es alfabéticamente menor que s2
-Boolean strMen(String s1, String s2);
 
 // Determina si los strings s1 y s2 son iguales
 Boolean strEq(String s1, String s2);
 
-// ---------- AB STRING ------------
+// ---------- ARCHIVO String ------------
 // Escribe en el archivo los caracteres del string s (incluido '\0')
 // Precondición: El archivo viene abierto para escritura.
 
@@ -48,6 +39,15 @@ void Bajar_String (String s, FILE * f);
 void Levantar_String (String &s, FILE * f);
 
 // ---------- Funciones / Procedimientos Específicos ------------
+
+// Auxiliar para evaluar si es numerico.
+Boolean strEsDigito(char c);
+
+// Auxiliar para evaluar caracter.
+Boolean strEsLetra(char c);
+
+// Auxiliar para evaluar espacio en blanco.
+Boolean strEsEspacioBlanco(char c);
 
 // Devuelve si s1 representa a un entero
 Boolean strEsEntero(String s1);
@@ -67,7 +67,9 @@ void strDividir( String sin, String &sout, String &sresto);
 // Valida si s1 es la variable X
 Boolean strEsVariable(String s1);
 
-// Valida si s1 es un operador (+,-,*/)
+// Valida si s1 es un operador (+,-,*,/)
 Boolean strEsOperador(String s1);
+
+Boolean comandoEsValido(String str);
 
 #endif // STRING_H_INCLUDED
