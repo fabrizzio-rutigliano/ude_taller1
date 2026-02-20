@@ -11,6 +11,8 @@ typedef nodoA * ArbolExpresion;
 
 void arbolExpresionCrear(ArbolExpresion &arbol);
 
+Boolean arbolExpresionEsVacio(ArbolExpresion arbol);
+
 void arbolExpresionInsertarTermino(ArbolExpresion &arbol, Termino termino);
 
 void arbolExpresionDesplegarArbol(ArbolExpresion arbol);
