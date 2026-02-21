@@ -24,6 +24,11 @@ int terminoDarValor(Termino termino){
     return termino.dato.valor;
 }
 
+void terminoDesplegarTermino(Termino termino){
+    if(termino.discriminante == VALOR)
+    printf('%d',termino.dato.valor);
+}
+
 char terminoDarVariable(Termino termino){
     return termino.dato.variable;
 }
