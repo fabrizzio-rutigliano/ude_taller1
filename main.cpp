@@ -1,9 +1,6 @@
-#include <iostream>
 
-using namespace std;
+void testStringModulo(); // definicion auxiliar para poder compilar
 
-int main()
-{
-    cout << "Hello world!" << endl;
-    return 0;
+int main() {
+    testStringModulo(); // Testeo de modulo string, solo funciones y procedimientos específicos.
 }

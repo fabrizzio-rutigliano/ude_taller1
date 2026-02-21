@@ -47,3 +47,4 @@ Makefile~
 *.layout
 *.cbp.save
 *.depend.save
+*.cbp
