@@ -111,6 +111,15 @@ void Levantar_String (String &s, FILE * f){
 
 // ---------- Funciones / Procedimientos Específicos ------------
 
+//Valida si el string s es vacio
+Boolean strEsVacio(String s){
+    Boolean result = FALSE;
+    if (strLar(s) == 1 && s[0] == '\0'){
+        result = TRUE;
+    }
+    return result;
+}
+
 //Transforma un entero a un String
 void strIntToStr(int num, String &s){
     String aux;

@@ -40,6 +40,9 @@ void Levantar_String (String &s, FILE * f);
 
 // ---------- Funciones / Procedimientos Específicos ------------
 
+//Valida si el string s es vacio
+Boolean strEsVacio(String s);
+
 //Transforma un entero a un String
 void strIntToStr(int num, String &s);
 
@@ -73,10 +76,10 @@ Boolean strEsEnteroPositivo(String s1);
 Boolean strEsAlfabetico(String s1);
 
 // Elimina los espacios en blanco al principio del string.
-void strEliminarEspaciosInicio( String sin, String &sout);
+void strEliminarEspaciosInicio(String sin, String &sout);
 
 // Devuelve sOut con la primera palabra de sIn, y devuelve sResto con lo que está después de la palabra inicial.
-void strDividir( String sin, String &sout, String &sresto);
+void strDividir(String sin, String &sout, String &sresto);
 
 // Valida si s1 es la variable X
 Boolean strEsVariable(String s1);
