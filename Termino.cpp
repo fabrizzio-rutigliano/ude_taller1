@@ -25,8 +25,27 @@ int terminoDarValor(Termino termino){
 }
 
 void terminoDesplegarTermino(Termino termino){
-    if(termino.discriminante == VALOR)
-    printf('%d',termino.dato.valor);
+    switch (termino.discriminante)
+    {
+    case VALOR:
+        printf("%d", termino.dato.valor);
+        break;
+    
+    case PARENTESIS:
+        printf("%c", termino.dato.parentesis);
+        break;
+
+    case VARIABLE:
+        printf("%c", termino.dato.variable);
+        break;
+        
+    case OPERADOR:
+        printf("%c", termino.dato.operador);
+        break;
+
+    default:
+        break;
+    }
 }
 
 char terminoDarVariable(Termino termino){

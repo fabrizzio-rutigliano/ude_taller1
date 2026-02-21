@@ -15,6 +15,8 @@ typedef struct{
 
 void terminoCrear(TipoTermino tipoTermino, int valor, char otro, Termino &termino);
 
+void terminoDesplegarTermino(Termino termino);
+
 int terminoDarValor(Termino termino);
 
 char terminoDarVariable(Termino termino);
