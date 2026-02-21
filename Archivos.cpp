@@ -11,7 +11,6 @@ void crearArchivo(String nomArch)
     fclose(f);
 }
 
-
 /* Abrir archivo con tipos de lectura
 FILE * fopen (String filename, String mode)
 "rb" Abre el archivo solo para lectura. Precondición: El archivo debe existir.
@@ -35,34 +34,4 @@ Boolean existeArchivo(String nomArch)
         fclose(f);
     }
     return existe;
-}
-
-
-// Determina si el archivo está vacío o no. Precondición: El archivo existe
-Boolean esVacioArchivo(String nomArch){
-    Boolean archivoVacio = FALSE;
-    FILE * f = fopen (nomArch, "rb");
-    fseek (f, 0, SEEK_END);
-    if (ftell (f) == 0)
-        archivoVacio = TRUE;
-    fclose (f);
-    return archivoVacio;
-}
-
-
-// Determina si el entero recibido está en el archivo. Precondición: El archivo existe
-Boolean perteneceArchivo(String nomArch, int entero){
-    Boolean esta = FALSE;
-    FILE * f = fopen (nomArch, "rb");
-    int buffer;
-    fread (&buffer, sizeof(int), 1, f);
-    while (!feof(f) && !esta)
-    {
-        if (buffer == entero)
-            esta = TRUE;
-        else
-            fread (&buffer, sizeof(int), 1, f);
-    }
-    fclose (f);
-    return esta;
 }
