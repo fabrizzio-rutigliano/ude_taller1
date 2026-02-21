@@ -44,7 +44,7 @@ void arbolExpresionDesplegarArbol(ArbolExpresion arbol)
     if(arbol != NULL)
     {
         arbolExpresionDesplegarArbol(arbol->hizq);
-        terminoDesplegarTermino(arbol->info);                     //agregar funcion en modulo Termino
+        terminoDesplegarTermino(arbol->info);
         arbolExpresionDesplegarArbol(arbol->hder);
     }
 }
@@ -71,33 +71,127 @@ void arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d, ArbolExpr
     arbol->hder = d;
 }
 
-int arbolExpresionEvaluar(ArbolExpresion arbol, int valor)
+int arbolExpresionEvaluar(ArbolExpresion arbol, int valor, Boolean &errorCero)
 {
-
+    if (arbol == NULL)
+        return 0;
+    else
+    {
+        switch (arbol->info.discriminante)
+        {
+            case VALOR:
+                return arbol->info.dato.valor;
+                break;
+            case VARIABLE:
+                return valor;
+                break;
+            case OPERADOR:
+                {
+                int resultIzq = arbolExpresionEvaluar(arbol->hizq, valor, errorCero);
+                int resultDer = arbolExpresionEvaluar(arbol->hder, valor, errorCero);
+                switch (arbol->info.dato.operador)
+                {
+                    case '+':
+                        return resultIzq+resultDer;
+                        break;
+                    case '-':
+                        return resultIzq-resultDer;
+                        break;
+                    case '*':
+                        return resultIzq*resultDer;
+                        break;
+                    case '/':
+                        if(resultDer == 0)
+                        {
+                            errorCero=TRUE;
+                            return 0;
+                        }
+                        else
+                            return resultIzq/resultDer;
+                        break;
+                    default:
+                        break;
+                }
+                }
+            default:
+                break;
+        }
+    }
+    return 0;
 }
 
-Boolean arbolExpresionExisteDivisionCero(ArbolExpresion arbol)
+/*Boolean arbolExpresionExisteDivisionCero(ArbolExpresion arbol)
 {
 
-}
+}*/
 
 Boolean arbolExpresionIguales(ArbolExpresion arbol1, ArbolExpresion arbol2)
 {
+    if(arbol1==NULL && arbol2==NULL)
+        return TRUE;
+    if(arbol1==NULL && arbol2==NULL)
+        return FALSE;
+    if(arbol1->info.discriminante != arbol2->info.discriminante)
+        return FALSE;
+    if(arbol1->info.discriminante == arbol2->info.discriminante)
+    {
+        switch (arbol1->info.discriminante)
+        {
+            case VALOR:
+                if(arbol1->info.dato.valor == arbol2->info.dato.valor)
+                    return TRUE;
+                else
+                    return FALSE;
+                break;
+            case VARIABLE:
+                if(arbol1->info.dato.variable == arbol2->info.dato.variable)
+                    return TRUE;
+                else 
+                    return FALSE;
+                break;
+            case OPERADOR:
+                if(arbol1->info.dato.operador == arbol2->info.dato.operador)
+                    return TRUE;
+                else 
+                    return FALSE;
+                break;
+            case PARENTESIS:
+                if(arbol1->info.dato.parentesis == arbol2->info.dato.parentesis)
+                    return TRUE;
+                else 
+                    return FALSE;
+                break;
+            default:
+                break;
+        }
 
+    }
+    
+    if (arbolExpresionIguales(arbol1->hizq, arbol2->hizq) == arbolExpresionIguales(arbol1->hder, arbol2->hder) == TRUE)
+        return TRUE;
+    else 
+        return FALSE;
 }
 
 // Escribe en el archivo los datos de todos los enteros del árbol
 // en forma recursiva. // Precondición: El archivo viene abierto para escritura.
 void arbolExpresionBajarAux(ArbolExpresion a, FILE * f)
 {
-
+    if (a != NULL)
+    {
+        terminoBajar(a->info, f);
+        arbolExpresionBajarAux(a->hizq, f);
+        arbolExpresionBajarAux(a->hder, f);
+    }
 }
 
 // Abre el archivo para escritura y escribe los datos de todos los
 // enteros del árbol (llamando al procedimiento anterior)
 void arbolExpresionBajar(ArbolExpresion a, String nomArch)
 {
-
+    FILE *f = fopen(nomArch, "wb");
+    arbolExpresionBajarAux(a, f);
+    fclose(f);
 }
 
 // Abre el archivo para lectura e inserta en el árbol todos los
@@ -105,5 +199,14 @@ void arbolExpresionBajar(ArbolExpresion a, String nomArch)
 // Precondición: El archivo existe.
 void arbolExpresionLevantar(ArbolExpresion &a, String nomArch)
 {
-
+    FILE *f = fopen(nomArch, "rb");
+    Termino terBuffer;
+    arbolExpresionCrear(a);
+    terminoLevantar(terBuffer, f);
+    while (!feof(f))
+    {
+        arbolExpresionInsertarTermino(a, terBuffer);
+        terminoLevantar(terBuffer, f);
+    }
+    fclose(f);
 }

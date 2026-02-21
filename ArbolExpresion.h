@@ -26,7 +26,7 @@ void arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d, ArbolExpr
 
 int arbolExpresionEvaluar(ArbolExpresion arbol, int valor);
 
-Boolean arbolExpresionExisteDivisionCero(ArbolExpresion arbol);
+//Boolean arbolExpresionExisteDivisionCero(ArbolExpresion arbol);
 
 Boolean arbolExpresionIguales(ArbolExpresion arbol1, ArbolExpresion arbol2);
 
