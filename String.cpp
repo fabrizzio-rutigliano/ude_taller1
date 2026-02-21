@@ -161,6 +161,12 @@ void strIntToStr(int num, String &s){
 
 //Transforma un char a un String
 void strCharToStr(char p, String &s){
+    
+    // Liberar memoria previa si ya estaba asignada
+    if (s != NULL){
+        delete[] s;
+    }
+    
     s = new char[2];
     s[0] = p;
     s[1] = '\0';
@@ -402,31 +408,31 @@ Boolean comandoEsValido(String str){
 
     String simple;
     strCrear(simple);
-    strCop(simple, "SIMPLE");
+    strCop(simple, "SIMPLE\0");
 
     String compuesta;
     strCrear(compuesta);
-    strCop(compuesta, "COMPUESTA");
+    strCop(compuesta, "COMPUESTA\0");
     
     String calcular;
     strCrear(calcular);
-    strCop(calcular, "CALCULAR");
+    strCop(calcular, "CALCULAR\0");
     
     String iguales;
     strCrear(iguales);
-    strCop(iguales, "IGUALES");
+    strCop(iguales, "IGUALES\0");
 
     String guardar;
     strCrear(guardar);
-    strCop(guardar, "GUARDAR");
+    strCop(guardar, "GUARDAR\0");
 
     String recuperar;
     strCrear(recuperar);
-    strCop(recuperar, "RECUPERAR");
+    strCop(recuperar, "RECUPERAR\0");
 
     String salir;
     strCrear(salir);
-    strCop(salir, "SALIR");
+    strCop(salir, "SALIR\0");
 
     if (str != NULL) {
 
