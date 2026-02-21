@@ -408,31 +408,38 @@ Boolean comandoEsValido(String str){
 
     String simple;
     strCrear(simple);
-    strCop(simple, "SIMPLE\0");
+    char auxSimple[] = "SIMPLE";
+    strCop(simple, auxSimple);
 
     String compuesta;
     strCrear(compuesta);
-    strCop(compuesta, "COMPUESTA\0");
+    char auxComp[] = "COMPUESTA";
+    strCop(compuesta, auxComp);
     
     String calcular;
     strCrear(calcular);
-    strCop(calcular, "CALCULAR\0");
+    char auxCalc[] = "CALCULAR";
+    strCop(calcular, auxCalc);
     
     String iguales;
     strCrear(iguales);
-    strCop(iguales, "IGUALES\0");
+    char auxIguales[] = "IGUALES";
+    strCop(iguales, auxIguales);
 
     String guardar;
     strCrear(guardar);
-    strCop(guardar, "GUARDAR\0");
+    char auxGuardar[] = "GUARDAR";
+    strCop(guardar, auxGuardar);
 
     String recuperar;
     strCrear(recuperar);
-    strCop(recuperar, "RECUPERAR\0");
+    char auxRecuperar[] = "RECUPERAR";
+    strCop(recuperar, auxRecuperar);
 
     String salir;
     strCrear(salir);
-    strCop(salir, "SALIR\0");
+    char auxSalir[] = "SALIR";
+    strCop(salir, auxSalir);
 
     if (str != NULL) {
 

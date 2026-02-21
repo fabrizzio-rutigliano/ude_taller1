@@ -64,7 +64,6 @@ void terminoBajar(Termino term, FILE * f ){
 // Precondición: El archivo viene abierto para lectura.
 void terminoLevantar(Termino &term, FILE * f ){
     String s;
-    char aux;
 
     Levantar_String(s, f);
     if(strEsEntero(s)) {

@@ -1,7 +1,7 @@
 #ifndef TERMINO_H_INCLUDED
 #define TERMINO_H_INCLUDED
-# include "TipoTermino.h"
-# include "String.h"
+#include "TipoTermino.h"
+#include "String.h"
 
 typedef struct{
         TipoTermino discriminante;
