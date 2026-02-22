@@ -1,4 +1,7 @@
-# include "Expresion.h"
+#ifndef LISTAEXPRESION_H_INCLUDED
+#define LISTAEXPRESION_H_INCLUDED
+
+#include "Expresion.h"
 
 typedef struct nodoLis{
         Expresion info;
@@ -7,18 +10,25 @@ typedef struct nodoLis{
         
 typedef nodoL * ListaExpresion;
 
+// Crea una lista vacía.
 void listaExpresionCrear(ListaExpresion &listaExp);
 
+// Libera la memoria asignada a la lista.
 void listaExpresionDestruir(ListaExpresion &listaExp);
 
+// Evaluar si la lista está vacía.
 Boolean listaExpresionEsVacia(ListaExpresion listaExp);
 
+// Recorre la lista devolviendo la cantidad de elementos + 1.
 int listaExpresionIndiceSiguiente(ListaExpresion listaExp);
 
-void listaExpresionDestruir(ListaExpresion &ListaExp);
+// Inserta la expresión al final de la lista.
+void listaExpresionInsertarFinal(ListaExpresion &listaExp, Expresion exp);
 
-void listaExpresionInsertarFinal(ListaExpresion &ListaExp, Expresion exp);
+// Evalua si el indice dado existe en la lista expresión.
+Boolean listaExpresionExisteIndice(ListaExpresion listaExp, int indice);
 
-Boolean listaExpresionExisteIndice(ListaExpresion ListaExp, int indice);
+// Dado un indice devuelve la expresión correspondiente.
+void listaExpresionDevolverExpresionXIndice(ListaExpresion listaExp, int indice, Expresion &expresion);
 
-void listaExpresionDevolverExpresionXIndice(ListaExpresion ListaExp, int indice, Expresion &expresion);
+#endif // LISTAEXPRESION_H_INCLUDED
