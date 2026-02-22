@@ -87,11 +87,15 @@ void testingModuloArbolExpresion ()
     printf("================================================================================\n"); 
     Termino ter4;
     ter4.discriminante = VALOR;
-    printf("\nEl discriminante del ter4 es... %d",ter4.discriminante);
+    printf("\n");
+    tipoTerminoDesplegar(ter4.discriminante);
+    printf("\n");
     ter4.dato.valor = 23;
     
     arbolExpresionInsertarTermino(ar,ter4);
-    printf("\nEl discriminante del ter4 es... %d",ar->info.discriminante);
+    printf("\n");
+    tipoTerminoDesplegar(ar->info.discriminante);
+    printf("\n");
     ArbolExpresion ar2;
     ar2 = NULL;
     Termino ter3;

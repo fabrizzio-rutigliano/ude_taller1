@@ -21,7 +21,7 @@ void arbolExpresionInsertarTermino(ArbolExpresion &arbol, Termino termino)
 {
     if (arbolExpresionEsVacio(arbol))
     {
-        arbol = new nodoA;
+        arbol = new nodoA();
         arbol->info = termino;
         arbol->hizq = NULL;
         arbol->hder = NULL;
