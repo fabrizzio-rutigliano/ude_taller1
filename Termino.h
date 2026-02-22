@@ -13,10 +13,13 @@ typedef struct{
         }dato;
 }Termino;
 
-void terminoCrear(TipoTermino tipoTermino, int valor, char otro, Termino &termino);
+// Carga el estructurado de Termino
+Termino terminoCrear(TipoTermino tipoTermino, int valor, char otro);
 
+// Devolver valor del termino según su discriminante.
 void terminoDesplegarTermino(Termino termino);
 
+// Auxiliares de dar
 int terminoDarValor(Termino termino);
 
 char terminoDarVariable(Termino termino);
@@ -25,10 +28,10 @@ char terminoDarOperador(Termino termino);
 
 char terminoDarParentesis(Termino termino);
 
-// Precondición: El archivo viene abierto para escritura.
+//Persiste al archivo el termino
 void terminoBajar(Termino term, FILE * f );
 
-// Precondición: El archivo viene abierto para lectura.
+//Recupera desde el archivo el termino
 void terminoLevantar(Termino &term, FILE * f );
 
 #endif // TERMINO_H_INCLUDED

@@ -4,7 +4,7 @@
 void testTerminoModulo() {
     printf("\n================================================================================\n");
     printf("INICIO DE TESTS DEL MODULO Termino\n");
-    printf("================================================================================\n");    
+    printf("================================================================================\n");
 
     // =========================================================================
     // terminoCrear
@@ -14,12 +14,12 @@ void testTerminoModulo() {
     printf("Caso VALOR\n");
     {
         TipoTermino tipoTermino = VALOR;
-        Termino termino;
+        tipoTerminoDesplegar(tipoTermino);printf(" - ");
         String s;
 
-        terminoCrear(tipoTermino, 4566, '\0', termino);
+        Termino termino = terminoCrear(tipoTermino, 4566, '\0');
         strCrear(s);
-        strIntToStr(termino.dato.valor, s);
+        strIntToStr(terminoDarValor(termino), s);
         terminoDesplegarTermino(termino);
         printf("\nTermino con discriminante VALOR = ");
         strPrint(s);
@@ -31,12 +31,12 @@ void testTerminoModulo() {
     printf("Caso VARIABLE\n");
     {
         TipoTermino tipoTermino = VARIABLE;
-        Termino termino;
+        tipoTerminoDesplegar(tipoTermino);printf(" - ");
         String s;
 
-        terminoCrear(tipoTermino, 0, 'x', termino);
+        Termino termino = terminoCrear(VARIABLE, 0, 'x');
         strCrear(s);
-        strCharToStr(termino.dato.variable, s);
+        strCharToStr(terminoDarVariable(termino), s);
         terminoDesplegarTermino(termino);
         printf("\nTermino con discriminante VARIABLE = ");
         strPrint(s);
@@ -48,12 +48,12 @@ void testTerminoModulo() {
     printf("Caso OPERADOR\n");
     {
         TipoTermino tipoTermino = OPERADOR;
-        Termino termino;
+        tipoTerminoDesplegar(tipoTermino);printf(" - ");
         String s;
 
-        terminoCrear(tipoTermino, 0, '+', termino);
+        Termino termino = terminoCrear(OPERADOR, 0, '+');
         strCrear(s);
-        strCharToStr(termino.dato.operador, s);
+        strCharToStr(terminoDarOperador(termino), s);
         terminoDesplegarTermino(termino);
         printf("\nTermino con discriminante OPERADOR = ");
         strPrint(s);
@@ -65,12 +65,12 @@ void testTerminoModulo() {
     printf("Caso PARENTESIS\n");
     {
         TipoTermino tipoTermino = PARENTESIS;
-        Termino termino;
+        tipoTerminoDesplegar(tipoTermino);printf(" - ");
         String s;
 
-        terminoCrear(tipoTermino, 0, ')', termino);
+        Termino termino = terminoCrear(PARENTESIS, 0, ')');
         strCrear(s);
-        strCharToStr(termino.dato.variable, s);
+        strCharToStr(terminoDarParentesis(termino), s);
         terminoDesplegarTermino(termino);
         printf("\nTermino con discriminante PARENTESIS = ");
         strPrint(s);
