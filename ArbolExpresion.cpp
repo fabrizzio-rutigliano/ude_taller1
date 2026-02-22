@@ -130,7 +130,7 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
     }
     else
     {
-        printf("discriminante = %d\n", arbol->info.discriminante);
+        printf("\ndiscriminante = %d\n", arbol->info.discriminante);
         switch (arbol->info.discriminante)
         {
             case VALOR:
