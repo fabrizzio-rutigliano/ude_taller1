@@ -1,13 +1,20 @@
-# include "ArbolExpresion.h"
+#ifndef EXPRESION_H_INCLUDED
+#define EXPRESION_H_INCLUDED
+
+#include "ArbolExpresion.h"
 
 typedef struct{
         int indice;
         ArbolExpresion terminos;
         } Expresion;
 
+// Carga un Struct expresion con su índice y árbol de terminos.
+Expresion expresionCrear(ArbolExpresion arbol, int indice);
 
-void expresionCrear(ArbolExpresion arbol, int indice, Expresion &exp);
-
+// Devuelve el indice de la expresión.
 int expresionDevolverIndice(Expresion exp);
 
+// Devuelve el árbol expresión del estructurado expresión.
 ArbolExpresion expresionDevolverArbolExpresion(Expresion expresion);
+
+#endif // EXPRESION_H_INCLUDED
