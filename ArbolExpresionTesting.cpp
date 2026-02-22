@@ -2,6 +2,7 @@
 
 void testingModuloArbolExpresion ()
 {
+
     printf("\n================================================================================\n");
     printf("INICIO DE TESTS DEL MODULO ArbolExpresion\n");
     printf("================================================================================\n");      
@@ -76,5 +77,51 @@ void testingModuloArbolExpresion ()
     else
         printf("\nEl arbol no es vacio\n");
 
+
+    // =========================================================================
+    // arbolExpresionCons
+    // =========================================================================
+
+    printf("\n================================================================================\n");
+    printf("TESTS DE arbolExpresionCons\n");
+    printf("================================================================================\n"); 
+    Termino ter4;
+    ter4.discriminante = VALOR;
+    printf("\nEl discriminante del ter4 es... %d",ter4.discriminante);
+    ter4.dato.valor = 23;
+    
+    arbolExpresionInsertarTermino(ar,ter4);
+    printf("\nEl discriminante del ter4 es... %d",ar->info.discriminante);
+    ArbolExpresion ar2;
+    ar2 = NULL;
+    Termino ter3;
+    ter3.discriminante = VARIABLE;
+    ter3.dato.valor = 'x';
+    arbolExpresionInsertarTermino(ar2, ter3);
+    Termino ter2;
+    ter2.discriminante = OPERADOR;
+    ter2.dato.operador = '+';
+    ArbolExpresion arsalida;
+    arsalida = NULL;
+    arsalida = arbolExpresionCons(ter2,ar,ar2);
+    arbolExpresionDesplegarArbol(arsalida);
+    arbolExpresionDestruir(ar);
+    arbolExpresionDestruir(ar2);
+    
+
+    // =========================================================================
+    // arbolExpresionEvaluar
+    // =========================================================================
+
+    printf("\n================================================================================\n");
+    printf("TESTS DE arbolExpresionEvaluar\n");
+    printf("================================================================================\n"); 
+
+    Boolean error = FALSE;
+    int resultado;
+    resultado = arbolExpresionEvaluar(arsalida, 7, error);
+    printf("\nLa evaluacion resulta en... %d\n",resultado);
+    delete(arsalida);
+    arsalida = NULL;
 
 }

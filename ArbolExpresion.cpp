@@ -73,50 +73,63 @@ ArbolExpresion arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d)
     return arbol;
 }
 
-int arbolExpresionEvaluar(ArbolExpresion arbol, int valor, Boolean &errorCero)
+int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
 {
     if (arbol == NULL)
+    {
         return 0;
+    }
     else
     {
+        printf("discriminante = %d\n", arbol->info.discriminante);
         switch (arbol->info.discriminante)
         {
             case VALOR:
+                {
+                printf("valor izq es... %d",arbol->info.dato.valor);
                 return arbol->info.dato.valor;
                 break;
+                }
             case VARIABLE:
-                return valor;
+                {
+                printf("%c",arbol->info.dato.variable);
+                return val;
                 break;
+                }
             case OPERADOR:
                 {
-                int resultIzq = arbolExpresionEvaluar(arbol->hizq, valor, errorCero);
-                int resultDer = arbolExpresionEvaluar(arbol->hder, valor, errorCero);
+                int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                printf("\nresultIzq... %d\n",resultIzq);
+                printf("\nresultDer... %d\n",resultDer);
                 switch (arbol->info.dato.operador)
                 {
                     case '+':
-                        return resultIzq+resultDer;
+                        return resultIzq + resultDer;
                         break;
                     case '-':
-                        return resultIzq-resultDer;
+                        return resultIzq - resultDer;
                         break;
                     case '*':
-                        return resultIzq*resultDer;
+                        return resultIzq * resultDer;
                         break;
                     case '/':
                         if(resultDer == 0)
                         {
-                            errorCero=TRUE;
+                            errorCero = TRUE;
                             return 0;
                         }
                         else
-                            return resultIzq/resultDer;
+                            return resultIzq / resultDer;
                         break;
                     default:
                         break;
                 }
                 }
-            default:
+            case PARENTESIS:
+                {
                 break;
+                }
         }
     }
     return 0;

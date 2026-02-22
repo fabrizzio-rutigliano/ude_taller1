@@ -24,7 +24,7 @@ colocando dicho valor como una nueva raíz y a los dos
 árboles como subárboles de la misma */ 
 ArbolExpresion arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d);
 
-int arbolExpresionEvaluar(ArbolExpresion arbol, int valor);
+int arbolExpresionEvaluar(ArbolExpresion arbol, int valor, Boolean &errorCero);
 
 //Boolean arbolExpresionExisteDivisionCero(ArbolExpresion arbol);
 
