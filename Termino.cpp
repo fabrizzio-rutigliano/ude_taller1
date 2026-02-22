@@ -1,8 +1,11 @@
 #include "Termino.h"
 
-void terminoCrear(TipoTermino tipoTermino, int valor, char otro, Termino &termino){
+// Carga el estructurado de Termino **Cambio a funcion
+Termino terminoCrear(TipoTermino tipoTermino, int valor, char otro){
 
+    Termino termino;
     termino.discriminante = tipoTermino;
+    
     switch(tipoTermino)
     {
     case VALOR:
@@ -18,34 +21,14 @@ void terminoCrear(TipoTermino tipoTermino, int valor, char otro, Termino &termin
         termino.dato.operador = otro;
         break;    
     }
+    
+    return termino;
 }
 
+// Auxiliares de dar
+// Precondicion: La discriminante debe corresponder a la funcion de retorno utilizada.
 int terminoDarValor(Termino termino){
     return termino.dato.valor;
-}
-
-void terminoDesplegarTermino(Termino termino){
-    switch (termino.discriminante)
-    {
-    case VALOR:
-        printf("%d", termino.dato.valor);
-        break;
-    
-    case PARENTESIS:
-        printf("%c", termino.dato.parentesis);
-        break;
-
-    case VARIABLE:
-        printf("%c", termino.dato.variable);
-        break;
-        
-    case OPERADOR:
-        printf("%c", termino.dato.operador);
-        break;
-
-    default:
-        break;
-    }
 }
 
 char terminoDarVariable(Termino termino){
@@ -60,10 +43,37 @@ char terminoDarParentesis(Termino termino){
     return termino.dato.parentesis;
 }
 
+// Devolver valor del termino según su discriminante.
+void terminoDesplegarTermino(Termino termino){
+    
+    switch (termino.discriminante)
+    {
+    case VALOR:
+        printf("%d", terminoDarValor(termino));
+        break;
+    
+    case PARENTESIS:
+        printf("%c", terminoDarParentesis(termino));
+        break;
+
+    case VARIABLE:
+        printf("%c", terminoDarVariable(termino));
+        break;
+        
+    case OPERADOR:
+        printf("%c", terminoDarOperador(termino));
+        break;
+
+    default:
+        break;
+    }
+}
+
 // Precondición: El archivo viene abierto para escritura.
 void terminoBajar(Termino term, FILE * f ){
 
     String s;
+    strCrear(s);
     switch(term.discriminante)
     {
     case VALOR:
@@ -83,11 +93,15 @@ void terminoBajar(Termino term, FILE * f ){
         Bajar_String(s, f);
         break;    
     }
+
+    strDestruir(s);
 }
 
 // Precondición: El archivo viene abierto para lectura.
 void terminoLevantar(Termino &term, FILE * f ){
+    
     String s;
+    strCrear(s);
 
     Levantar_String(s, f);
     if(strEsEntero(s)) {
@@ -103,4 +117,6 @@ void terminoLevantar(Termino &term, FILE * f ){
         term.discriminante = PARENTESIS;
         term.dato.parentesis = strStrToChar(s);
     }
+
+    strDestruir(s);
 }
