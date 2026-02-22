@@ -17,27 +17,29 @@ Boolean arbolExpresionEsVacio(ArbolExpresion arbol)
 
 //el arbol se carga en orden, necesita que se le pasen los terminos considerando el orden. 
 //Resolver la logica de carga en funcion que llama a la carga de terminos, asignando el numero correspondiente.
-void arbolExpresionInsertarTermino(ArbolExpresion &arbol, Termino termino)
+void arbolExpresionInsertarTermino(ArbolExpresion &arbol, Termino termino, int posicion)
 {
     if (arbolExpresionEsVacio(arbol))
     {
         arbol = new nodoA();
         arbol->info = termino;
+        arbol->numeroNodo = posicion;
         arbol->hizq = NULL;
         arbol->hder = NULL;
     }
     else
     {
-        if (arbolExpresionEsVacio(arbol->hizq))
+        if (posicion < arbol->numeroNodo)
         {
-            arbolExpresionInsertarTermino(arbol->hizq, termino);
+            arbolExpresionInsertarTermino(arbol->hizq, termino, posicion);
         }
         else
         {
-            arbolExpresionInsertarTermino(arbol->hder, termino);
+            arbolExpresionInsertarTermino(arbol->hder, termino, posicion);
         }
     }
 }
+
 
 void arbolExpresionDesplegarArbol(ArbolExpresion arbol)
 {
@@ -60,15 +62,62 @@ void arbolExpresionDestruir(ArbolExpresion &arbol)
     }    
 }
 
+int arbolExpresionDarMayor(ArbolExpresion arbol)
+{
+    int result;
+    while(arbol->hder != NULL)
+    {
+        arbol = arbol->hder;
+    }
+    result = arbol->numeroNodo;
+    return result;
+}
+
+void arbolExpresionAjustarIndices(ArbolExpresion &d, int posicion)
+{
+    if(d!=NULL)
+    {
+        arbolExpresionAjustarIndices(d->hizq, posicion);
+        arbolExpresionAjustarIndices(d->hder, posicion);
+        d->numeroNodo = d->numeroNodo + posicion;
+    }
+}
+
+void arbolExpresionParentizar(ArbolExpresion &arbol, Boolean izq)
+{
+    if(izq)
+    {
+        arbolExpresionAjustarIndices(arbol, 1);
+        Termino ter;
+        ter.discriminante = PARENTESIS;
+        ter.dato.parentesis = '(';
+        arbolExpresionInsertarTermino(arbol, ter, 1);
+    }
+    else
+    {
+        int mayor = arbolExpresionDarMayor(arbol);
+        Termino ter;
+        ter.discriminante = PARENTESIS;
+        ter.dato.parentesis = ')';
+        arbolExpresionInsertarTermino(arbol, ter, mayor + 1);
+    }
+}
+
 /* dados dos árboles y un valor, devolver un nuevo árbol   
 colocando dicho valor como una nueva raíz y a los dos  
 árboles como subárboles de la misma */ 
 //modificada para devolver arbolExpresion, era void
 ArbolExpresion arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d)
 {
+    int posicion;
+    arbolExpresionParentizar(i,TRUE);
+    posicion = arbolExpresionDarMayor(i) + 1;
     ArbolExpresion arbol = new nodoA;
     arbol->info = r;
+    arbol->numeroNodo = posicion;
     arbol->hizq = i;
+    arbolExpresionParentizar(d,FALSE);
+    arbolExpresionAjustarIndices(d, posicion);
     arbol->hder = d;
     return arbol;
 }
@@ -220,7 +269,7 @@ void arbolExpresionLevantar(ArbolExpresion &a, String nomArch)
     terminoLevantar(terBuffer, f);
     while (!feof(f))
     {
-        arbolExpresionInsertarTermino(a, terBuffer);
+        //arbolExpresionInsertarTermino(a, terBuffer);
         terminoLevantar(terBuffer, f);
     }
     fclose(f);

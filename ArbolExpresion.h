@@ -13,11 +13,17 @@ void arbolExpresionCrear(ArbolExpresion &arbol);
 
 Boolean arbolExpresionEsVacio(ArbolExpresion arbol);
 
-void arbolExpresionInsertarTermino(ArbolExpresion &arbol, Termino termino);
+void arbolExpresionInsertarTermino(ArbolExpresion &arbol, Termino termino, int posicion);
 
 void arbolExpresionDesplegarArbol(ArbolExpresion arbol);
 
 void arbolExpresionDestruir(ArbolExpresion &arbol);
+
+//Devuelve el mayor indice del arbol
+int arbolExpresionDarMayor(ArbolExpresion arbol);
+
+//ajusta los indices del arbol a la derecha para el cons
+void arbolExpresionAjustarIndices(ArbolExpresion &d, int posicion);
 
 /* dados dos árboles y un valor, devolver un nuevo árbol   
 colocando dicho valor como una nueva raíz y a los dos  

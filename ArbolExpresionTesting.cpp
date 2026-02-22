@@ -49,7 +49,7 @@ void testingModuloArbolExpresion ()
     Termino ter;
     ter.discriminante = VALOR;
     ter.dato.valor = 23;
-    arbolExpresionInsertarTermino(ar, ter);
+    arbolExpresionInsertarTermino(ar, ter, 1);
 
 
     // =========================================================================
@@ -92,7 +92,7 @@ void testingModuloArbolExpresion ()
     printf("\n");
     ter4.dato.valor = 23;
     
-    arbolExpresionInsertarTermino(ar,ter4);
+    arbolExpresionInsertarTermino(ar,ter4, 1);
     printf("\n");
     tipoTerminoDesplegar(ar->info.discriminante);
     printf("\n");
@@ -101,7 +101,7 @@ void testingModuloArbolExpresion ()
     Termino ter3;
     ter3.discriminante = VARIABLE;
     ter3.dato.valor = 'x';
-    arbolExpresionInsertarTermino(ar2, ter3);
+    arbolExpresionInsertarTermino(ar2, ter3, 2);
     Termino ter2;
     ter2.discriminante = OPERADOR;
     ter2.dato.operador = '+';
@@ -109,8 +109,8 @@ void testingModuloArbolExpresion ()
     arsalida = NULL;
     arsalida = arbolExpresionCons(ter2,ar,ar2);
     arbolExpresionDesplegarArbol(arsalida);
-    arbolExpresionDestruir(ar);
-    arbolExpresionDestruir(ar2);
+    //arbolExpresionDestruir(ar);
+    //arbolExpresionDestruir(ar2);
     
 
     // =========================================================================
@@ -127,5 +127,6 @@ void testingModuloArbolExpresion ()
     printf("\nLa evaluacion resulta en... %d\n",resultado);
     delete(arsalida);
     arsalida = NULL;
-
+    arbolExpresionDestruir(ar);
+    arbolExpresionDestruir(ar2);
 }
