@@ -114,7 +114,7 @@ void Levantar_String (String &s, FILE * f){
 //Valida si el string s es vacio
 Boolean strEsVacio(String s){
     Boolean result = FALSE;
-    if (strLar(s) == 1 && s[0] == '\0'){
+    if (strLar(s) == 0 && s[0] == '\0'){
         result = TRUE;
     }
     return result;
@@ -340,9 +340,27 @@ void strEliminarEspaciosInicio( String sin, String &sout){
     delete[] aux;
 };
 
+// Devuelve si s1 es una cadena de espacios
+Boolean strEsCadenaEnBlanco(String s1){
+    int i = 0;
+    Boolean enBlanco = TRUE;
+
+    if(strEsVacio(s1)){
+        enBlanco = FALSE;
+    }
+
+    while (s1[i] != '\0' && enBlanco){
+        if(!strEsEspacioBlanco(s1[i])){
+            enBlanco = FALSE;
+        }
+        i++;
+    }
+    return enBlanco;
+}
+
 /* Devuelve sOut con la primera palabra de sIn, 
     y devuelve sResto con lo que está después de la palabra inicial.*/
-void strDividir( String sin, String &sout, String &sresto){
+void strDividir(String sin, String &sout, String &sresto){
     
     int i = 0;
     int j = 0;
@@ -370,6 +388,9 @@ void strDividir( String sin, String &sout, String &sresto){
             i++;
         }
         r[k] = '\0';
+        if(strEsCadenaEnBlanco(r)){
+            r[0] = '\0';
+        }
 
         strCop(sout, o);
         strCop(sresto, r);

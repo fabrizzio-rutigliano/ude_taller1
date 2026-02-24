@@ -22,7 +22,8 @@ void listaStringInsertarElemento(String str, ListaString &lista){
 
     ListaString aux;
     ListaString nuevoNodo = new NodoS();
-    nuevoNodo ->palabra = str;
+    strCrear(nuevoNodo->palabra);
+    strCop(nuevoNodo->palabra, str);
     nuevoNodo ->sig = NULL;
     
     if(lista == NULL){
@@ -32,13 +33,12 @@ void listaStringInsertarElemento(String str, ListaString &lista){
         while(aux ->sig != NULL){
             aux = aux ->sig;
         }
-        aux = nuevoNodo;
+        aux->sig = nuevoNodo;
     }
 }
 
 //Parsea entrada por espacios, las 'palabras' resultantes se guardan en lista
 void listaStringSplit(String entrada, ListaString &lista){
-
     String strAux, strOut, strResto;
 
     strCrear(strResto);
@@ -47,9 +47,13 @@ void listaStringSplit(String entrada, ListaString &lista){
         strCrear(strAux);
         strEliminarEspaciosInicio(strResto, strAux);
 
+        strDestruir(strResto);
+        strCrear(strResto);
+
         strCrear(strOut);
         strDividir(strAux, strOut, strResto);
         listaStringInsertarElemento(strOut, lista);
+        strDestruir(strOut);
         strDestruir(strAux);
     }
     strDestruir(strResto);
@@ -57,7 +61,7 @@ void listaStringSplit(String entrada, ListaString &lista){
 
 //Obtiene str guardado en lista segun su indice
 //Precondicion la lista no es vacia
-//Precondicion indic es mayor a cero y es menor igual a la cantidad de elementos de la lista
+//Precondicion indice es mayor a cero y es menor igual a la cantidad de elementos de la lista
 void listaStringObtener(int indice, ListaString lista, String &str){
     Boolean encontre = FALSE;
     ListaString aux = lista;
@@ -84,4 +88,21 @@ int listaStringCantElementos(ListaString lista){
         aux = aux ->sig;
     }
     return count;
+}
+
+//Despliega la listaString completa - solo por motivos de testing - 
+void listaStringDesplegar(ListaString lista){
+    ListaString aux = lista;
+    String enter;
+    strCrear(enter);
+    char auxEnter[] = "\n";
+    strCop(enter, auxEnter);
+
+    while (aux != NULL)
+    {
+
+       strPrint(aux->palabra);
+       strPrint(enter);
+       aux = aux->sig;
+    }
 }

@@ -78,6 +78,9 @@ Boolean strEsAlfabetico(String s1);
 // Elimina los espacios en blanco al principio del string.
 void strEliminarEspaciosInicio(String sin, String &sout);
 
+// Devuelve si s1 es una cadena de espacios
+Boolean strEsCadenaEnBlanco(String s1);
+
 // Devuelve sOut con la primera palabra de sIn, y devuelve sResto con lo que está después de la palabra inicial.
 void strDividir(String sin, String &sout, String &sresto);
 
