@@ -25,6 +25,9 @@ int arbolExpresionDarMayor(ArbolExpresion arbol);
 //ajusta los indices del arbol a la derecha para el cons
 void arbolExpresionAjustarIndices(ArbolExpresion &d, int posicion);
 
+//indiza el arbol
+void arbolExpresionIndizar(ArbolExpresion &a, int &indice);
+
 /* dados dos árboles y un valor, devolver un nuevo árbol   
 colocando dicho valor como una nueva raíz y a los dos  
 árboles como subárboles de la misma */ 

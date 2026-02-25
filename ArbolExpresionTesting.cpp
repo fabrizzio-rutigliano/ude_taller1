@@ -125,8 +125,66 @@ void testingModuloArbolExpresion ()
     int resultado;
     resultado = arbolExpresionEvaluar(arsalida, 7, error);
     printf("\nLa evaluacion resulta en... %d\n",resultado);
-    delete(arsalida);
-    arsalida = NULL;
+    
+
+
+    // =========================================================================
+    // arbolExpresionIguales
+    // =========================================================================
+
+    printf("\n================================================================================\n");
+    printf("TESTS DE arbolExpresionIguales\n");
+    printf("================================================================================\n"); 
+
+
+    printf("\nEl arbol 1 es... ");
+    arbolExpresionDesplegarArbol(arsalida);
+    printf("\nEl arbol 2 es... ");
+    arbolExpresionDesplegarArbol(arsalida);
+    Boolean eq=FALSE;
+    eq = arbolExpresionIguales(arsalida, arsalida);
+    if(eq)
+        printf("\nIguales\n");
+    else    
+        printf("\nNo son iguales\n");
+
+
+
+
+    // =========================================================================
+    // arbolExpresionBajar
+    // =========================================================================
+
+    printf("\n================================================================================\n");
+    printf("TESTS DE arbolExpresionBajar\n");
+    printf("================================================================================\n");
+
+    String narch;
+    strCrear(narch);
+    strScan(narch);
+    arbolExpresionBajar(arsalida, narch);
+    printf("\nSe gurdo... ");
+    arbolExpresionDesplegarArbol(arsalida);
+
+    // =========================================================================
+    // arbolExpresionLevantar
+    // =========================================================================
+
+    printf("\n================================================================================\n");
+    printf("TESTS DE arbolExpresionLevantar\n");
+    printf("================================================================================\n");
+    ar2=NULL;
+    arbolExpresionLevantar(ar2, narch);
+    printf("\nSe levanto... ");
+    arbolExpresionDesplegarArbol(ar2);
+
+    strDestruir(narch);
+    
+
+
+
     arbolExpresionDestruir(ar);
     arbolExpresionDestruir(ar2);
+    delete(arsalida);
+    arsalida = NULL;
 }

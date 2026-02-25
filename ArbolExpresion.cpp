@@ -83,6 +83,17 @@ void arbolExpresionAjustarIndices(ArbolExpresion &d, int posicion)
     }
 }
 
+//parametro indice debe recibir 0 al ser llamada la funcion.
+void arbolExpresionIndizar(ArbolExpresion &a, int &indice)
+{
+    if(a!=NULL)
+    {
+        arbolExpresionIndizar(a->hizq, indice);
+        a->numeroNodo = indice++;
+        arbolExpresionIndizar(a->hder, indice); 
+    }
+}
+
 void arbolExpresionParentizar(ArbolExpresion &arbol, Boolean izq)
 {
     if(izq)
@@ -243,8 +254,8 @@ void arbolExpresionBajarAux(ArbolExpresion a, FILE * f)
 {
     if (a != NULL)
     {
-        terminoBajar(a->info, f);
         arbolExpresionBajarAux(a->hizq, f);
+        terminoBajar(a->info, f);
         arbolExpresionBajarAux(a->hder, f);
     }
 }
@@ -263,14 +274,21 @@ void arbolExpresionBajar(ArbolExpresion a, String nomArch)
 // Precondición: El archivo existe.
 void arbolExpresionLevantar(ArbolExpresion &a, String nomArch)
 {
+    int indice = 0;
     FILE *f = fopen(nomArch, "rb");
     Termino terBuffer;
     arbolExpresionCrear(a);
     terminoLevantar(terBuffer, f);
+    arbolExpresionInsertarTermino(a, terBuffer, 1);
     while (!feof(f))
     {
         //arbolExpresionInsertarTermino(a, terBuffer);
         terminoLevantar(terBuffer, f);
+        if(a->hizq != NULL)
+            arbolExpresionInsertarTermino(a->hizq, terBuffer, 1);
+        else
+            arbolExpresionInsertarTermino(a->hder, terBuffer, 1);
     }
     fclose(f);
+    arbolExpresionIndizar(a, indice);
 }
