@@ -141,18 +141,18 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
     }
     else
     {
-        printf("\ndiscriminante = %d\n", arbol->info.discriminante);
+        //printf("\ndiscriminante = %d\n", arbol->info.discriminante);
         switch (arbol->info.discriminante)
         {
             case VALOR:
                 {
-                printf("valor izq es... %d",arbol->info.dato.valor);
+                //printf("valor izq es... %d",arbol->info.dato.valor);
                 return arbol->info.dato.valor;
                 break;
                 }
             case VARIABLE:
                 {
-                printf("%c",arbol->info.dato.variable);
+                //printf("%c",arbol->info.dato.variable);
                 return val;
                 break;
                 }
@@ -160,8 +160,8 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
                 {
                 int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
                 int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
-                printf("\nresultIzq... %d\n",resultIzq);
-                printf("\nresultDer... %d\n",resultDer);
+                //printf("\nresultIzq... %d\n",resultIzq);
+                //printf("\nresultDer... %d\n",resultDer);
                 switch (arbol->info.dato.operador)
                 {
                     case '+':
