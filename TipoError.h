@@ -1,1 +1,33 @@
-typedef enum{ERRORSINTAXIS,ERRORCOMANDO} TipoError;
+#ifndef TIPOERROR_H_INCLUDED
+#define TIPOERROR_H_INCLUDED
+
+#include <stdio.h>
+
+typedef enum {
+
+    // Entrada
+    ERROR_LINEA_VACIA,
+    ERROR_COMANDO_DESCONOCIDO,
+    
+    // Parametros
+    ERROR_CANT_PARAMETROS_INVALIDA,
+    ERROR_PARAMETRO_INVALIDO,
+    ERROR_PARAMETRO_NO_ENTERO,
+    ERROR_PARAMETRO_NO_ENTERO_POSITIVO,
+
+    // Indices
+    ERROR_INDICE_INEXISTENTE,
+
+    // Calculos
+    ERROR_DIVISION_POR_CERO,
+
+    // Archivos
+    ERROR_ARCHIVO_NOMBRE_INVALIDO,
+    ERROR_ARCHIVO_NO_ENCONTRADO
+
+} TipoError;
+
+// Muestra un mensaje de error y agrega contexto/ayuda.
+void tipoErrorDesplegar(TipoError e);
+
+#endif // TIPOERROR_H_INCLUDED
