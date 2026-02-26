@@ -15,6 +15,11 @@ Boolean arbolExpresionEsVacio(ArbolExpresion arbol)
     return resultado;
 }
 
+int darNumeroNodo(ArbolExpresion arbol)
+{
+    return arbol->numeroNodo;
+}
+
 //el arbol se carga en orden, necesita que se le pasen los terminos considerando el orden. 
 //Resolver la logica de carga en funcion que llama a la carga de terminos, asignando el numero correspondiente.
 void arbolExpresionInsertarTermino(ArbolExpresion &arbol, Termino termino, int posicion)
@@ -64,7 +69,7 @@ void arbolExpresionDestruir(ArbolExpresion &arbol)
 
 void arbolExpresionCopiar(ArbolExpresion &ar1, ArbolExpresion ar2)
 {
-    
+
 }
 
 int arbolExpresionDarMayor(ArbolExpresion arbol)
@@ -261,6 +266,7 @@ void arbolExpresionBajarAux(ArbolExpresion a, FILE * f)
     {
         arbolExpresionBajarAux(a->hizq, f);
         terminoBajar(a->info, f);
+        fwrite (darNumeroNodo(a), sizeof(int), 1, f);
         arbolExpresionBajarAux(a->hder, f);
     }
 }
