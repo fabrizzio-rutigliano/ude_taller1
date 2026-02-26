@@ -20,3 +20,10 @@ ArbolExpresion expresionDevolverArbolExpresion(Expresion expresion)
 {
     return expresion.terminos;
 }
+
+// Copia una expresión
+void expresionCopiar(Expresion &expCopia, Expresion expOriginal){
+    expCopia.indice = expOriginal.indice;
+    expCopia.terminos = NULL;
+	arbolExpresionCopiar(expCopia.terminos, expOriginal.terminos);
+}
