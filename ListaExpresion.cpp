@@ -7,6 +7,7 @@ void listaExpresionCrear(ListaExpresion &listaExp)
 };
 
 // Libera la memoria asignada a la lista.
+//Usar selectora
 void listaExpresionDestruir(ListaExpresion &listaExp)
 {
     ListaExpresion aux;

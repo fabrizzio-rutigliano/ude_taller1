@@ -19,6 +19,8 @@ void arbolExpresionDesplegarArbol(ArbolExpresion arbol);
 
 void arbolExpresionDestruir(ArbolExpresion &arbol);
 
+void arbolExpresionCopiar(ArbolExpresion &ar1, ArbolExpresion ar2);
+
 //Devuelve el mayor indice del arbol
 int arbolExpresionDarMayor(ArbolExpresion arbol);
 

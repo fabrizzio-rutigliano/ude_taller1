@@ -1,11 +1,9 @@
-// definiciones auxiliares para poder compilar
-//void testStringModulo();
+//void testStringModulo(); // definicion auxiliar para poder compilar
 //void testTerminoModulo();
 //void testingModuloArbolExpresion();
 //void testExpresionModulo();
 //void testListaStringModulo();
-//void testListaExpresionModulo();
-void testTipoErrorModulo();
+void testListaExpresionModulo();
 
 int main() {
     //testStringModulo(); // Testeo de modulo string, solo funciones y procedimientos específicos.
@@ -13,6 +11,5 @@ int main() {
     //testingModuloArbolExpresion();
     //testExpresionModulo();
     //testListaStringModulo();
-    //testListaExpresionModulo();
-    testTipoErrorModulo();
+    testListaExpresionModulo();
 }

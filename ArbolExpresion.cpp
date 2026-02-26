@@ -62,6 +62,11 @@ void arbolExpresionDestruir(ArbolExpresion &arbol)
     }    
 }
 
+void arbolExpresionCopiar(ArbolExpresion &ar1, ArbolExpresion ar2)
+{
+    
+}
+
 int arbolExpresionDarMayor(ArbolExpresion arbol)
 {
     int result;
