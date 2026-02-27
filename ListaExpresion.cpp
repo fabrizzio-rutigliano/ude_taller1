@@ -17,7 +17,8 @@ void listaExpresionDestruir(ListaExpresion &listaExp)
         listaExp = listaExp->sig;
 
         // Liberar el árbol asociado a la expresión
-        ArbolExpresion arbol = aux->info.terminos;
+        //ArbolExpresion arbol = aux->info.terminos;
+        ArbolExpresion arbol = expresionDevolverArbolExpresion(aux->info)
         arbolExpresionDestruir(arbol);
 
         delete aux;
@@ -53,7 +54,10 @@ int listaExpresionIndiceSiguiente(ListaExpresion listaExp)
 void listaExpresionInsertarFinal(ListaExpresion &listaExp, Expresion exp)
 {
     ListaExpresion nuevoNodo = new nodoL;
-    nuevoNodo->info = exp;
+    
+    nuevoNodo->info.terminos = NULL;
+    expresionCopiar(nuevoNodo->info, exp);
+    
     nuevoNodo->sig = NULL;
 
     if (listaExpresionEsVacia(listaExp))

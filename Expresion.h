@@ -17,4 +17,7 @@ int expresionDevolverIndice(Expresion exp);
 // Devuelve el árbol expresión del estructurado expresión.
 ArbolExpresion expresionDevolverArbolExpresion(Expresion expresion);
 
+// Copia una expresión
+void expresionCopiar(Expresion &expCopia, Expresion expOriginal);
+
 #endif // EXPRESION_H_INCLUDED
