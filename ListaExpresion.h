@@ -29,6 +29,6 @@ void listaExpresionInsertarFinal(ListaExpresion &listaExp, Expresion exp);
 Boolean listaExpresionExisteIndice(ListaExpresion listaExp, int indice);
 
 // Dado un indice devuelve la expresión correspondiente.
-void listaExpresionDevolverExpresionXIndice(ListaExpresion listaExp, int indice, Expresion &expresion);
+Expresion listaExpresionDevolverExpresionXIndice(ListaExpresion listaExp, int indice);
 
 #endif // LISTAEXPRESION_H_INCLUDED

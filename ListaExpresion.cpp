@@ -18,7 +18,7 @@ void listaExpresionDestruir(ListaExpresion &listaExp)
 
         // Liberar el árbol asociado a la expresión
         //ArbolExpresion arbol = aux->info.terminos;
-        ArbolExpresion arbol = expresionDevolverArbolExpresion(aux->info)
+        ArbolExpresion arbol = expresionDevolverArbolExpresion(aux->info);
         arbolExpresionDestruir(arbol);
 
         delete aux;
@@ -92,13 +92,13 @@ Boolean listaExpresionExisteIndice(ListaExpresion listaExp, int indice)
 
 // Dado un indice devuelve la expresión correspondiente.
 // Precondicion: existe el indice en la lista
-void listaExpresionDevolverExpresionXIndice(ListaExpresion listaExp, int indice, Expresion &expresion)
+Expresion listaExpresionDevolverExpresionXIndice(ListaExpresion listaExp, int indice)
 {
     while (listaExp != NULL)
     {
         if (expresionDevolverIndice(listaExp->info) == indice)
         {
-            expresion = listaExp->info;
+            return listaExp->info;
         }
         listaExp = listaExp->sig;
     }
