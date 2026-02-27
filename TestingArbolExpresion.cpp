@@ -101,7 +101,7 @@ void testingModuloArbolExpresion ()
     Termino ter3;
     ter3.discriminante = VARIABLE;
     ter3.dato.valor = 'x';
-    arbolExpresionInsertarTermino(ar2, ter3, 2);
+    arbolExpresionInsertarTermino(ar2, ter3, 1);
     Termino ter2;
     ter2.discriminante = OPERADOR;
     ter2.dato.operador = '+';
@@ -160,6 +160,7 @@ void testingModuloArbolExpresion ()
     printf("================================================================================\n");
 
     String narch;
+    printf("\nIngrese el nombre de archivo... ");
     strCrear(narch);
     strScan(narch);
     arbolExpresionBajar(arsalida, narch);

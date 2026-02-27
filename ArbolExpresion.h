@@ -13,12 +13,15 @@ void arbolExpresionCrear(ArbolExpresion &arbol);
 
 Boolean arbolExpresionEsVacio(ArbolExpresion arbol);
 
+int darNumeroNodo(ArbolExpresion arbol);
+
 void arbolExpresionInsertarTermino(ArbolExpresion &arbol, Termino termino, int posicion);
 
 void arbolExpresionDesplegarArbol(ArbolExpresion arbol);
 
 void arbolExpresionDestruir(ArbolExpresion &arbol);
 
+//Copia el arbol2 en el arbol1
 void arbolExpresionCopiar(ArbolExpresion &ar1, ArbolExpresion ar2);
 
 //Devuelve el mayor indice del arbol
