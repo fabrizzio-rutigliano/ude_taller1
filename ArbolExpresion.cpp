@@ -69,7 +69,12 @@ void arbolExpresionDestruir(ArbolExpresion &arbol)
 
 void arbolExpresionCopiar(ArbolExpresion &ar1, ArbolExpresion ar2)
 {
-
+    delete[] ar1;
+    ar1 = new nodoA;
+    ar1->info = ar2 ->info;
+    ar1->numeroNodo = darNumeroNodo(ar2);
+    ar1->hizq = ar2->hizq;
+    ar1->hder = ar2->hder;
 }
 
 int arbolExpresionDarMayor(ArbolExpresion arbol)
@@ -108,7 +113,7 @@ void arbolExpresionParentizar(ArbolExpresion &arbol, Boolean izq)
 {
     if(izq)
     {
-        arbolExpresionAjustarIndices(arbol, 1);
+        arbolExpresionAjustarIndices(arbol, darNumeroNodo(arbol));
         Termino ter;
         ter.discriminante = PARENTESIS;
         ter.dato.parentesis = '(';
@@ -264,9 +269,11 @@ void arbolExpresionBajarAux(ArbolExpresion a, FILE * f)
 {
     if (a != NULL)
     {
-        arbolExpresionBajarAux(a->hizq, f);
+        int indice;
         terminoBajar(a->info, f);
-        fwrite (darNumeroNodo(a), sizeof(int), 1, f);
+        indice = darNumeroNodo(a);
+        fwrite (&indice, sizeof(int), 1, f);
+        arbolExpresionBajarAux(a->hizq, f);
         arbolExpresionBajarAux(a->hder, f);
     }
 }
@@ -285,21 +292,20 @@ void arbolExpresionBajar(ArbolExpresion a, String nomArch)
 // Precondición: El archivo existe.
 void arbolExpresionLevantar(ArbolExpresion &a, String nomArch)
 {
-    int indice = 0;
+    int indice;
     FILE *f = fopen(nomArch, "rb");
     Termino terBuffer;
     arbolExpresionCrear(a);
     terminoLevantar(terBuffer, f);
-    arbolExpresionInsertarTermino(a, terBuffer, 1);
+    fread(&indice,sizeof(int),1,f);
+    arbolExpresionInsertarTermino(a, terBuffer, indice);
     while (!feof(f))
     {
         //arbolExpresionInsertarTermino(a, terBuffer);
         terminoLevantar(terBuffer, f);
-        if(a->hizq != NULL)
-            arbolExpresionInsertarTermino(a->hizq, terBuffer, 1);
-        else
-            arbolExpresionInsertarTermino(a->hder, terBuffer, 1);
+        fread(&indice,sizeof(int),1,f);
+        arbolExpresionInsertarTermino(a, terBuffer, indice);
     }
     fclose(f);
-    arbolExpresionIndizar(a, indice);
+    //arbolExpresionIndizar(a, indice);
 }
