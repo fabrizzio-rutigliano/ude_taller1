@@ -157,7 +157,7 @@ void testListaExpresionModulo()
 
         // Precondicion: el indice existe
         Expresion devuelta;
-        listaExpresionDevolverExpresionXIndice(l, 20, devuelta);
+        devuelta = listaExpresionDevolverExpresionXIndice(l, 20);
 
         if (expresionDevolverIndice(devuelta) == 20)
             printf("[OK] devolverExpresionXIndice devuelve una expresion con indice 20\n");

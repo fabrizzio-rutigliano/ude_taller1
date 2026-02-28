@@ -17,6 +17,7 @@ typedef enum {
 
     // Indices
     ERROR_INDICE_INEXISTENTE,
+    ERROR_LISTA_VACIA
 
     // Calculos
     ERROR_DIVISION_POR_CERO,
