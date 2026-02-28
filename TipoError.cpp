@@ -1,4 +1,5 @@
 #include "TipoError.h"
+#include <stdio.h>
 
 void tipoErrorDesplegar(TipoError e) {
 
@@ -52,7 +53,11 @@ void tipoErrorDesplegar(TipoError e) {
             printf("La expresion indicada por indice no existe.\n");
             printf("Verifique el numero de indice y vuelva a intentar.\n");
             break;
-
+        
+        case ERROR_LISTA_VACIA:
+            printf("No hay expresiones disponibles para mostrar.\n");
+            printf("Debe crear primero alguna expresión para poder desplegarlas en pantalla.\n");
+            break;
         // ---------------- Calculos ----------------
         case ERROR_DIVISION_POR_CERO:
             printf("La operacion no puede realizarse: division por cero.\n");
