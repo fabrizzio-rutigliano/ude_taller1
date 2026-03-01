@@ -1,8 +1,9 @@
 #include "Comandos.h"
 
 //Sintaxis del compando verificada antes de llamar a la funcion en MAIN
-void comandoCalcular(ListaExpresion listaExp, int posLista, int valor)
+void comandoCalcular(ListaString lstring, listaExp)
 {
+    if (listaStringCantElementos(listaStr) != 2)
     if (posLista >= 1)
     {
         Boolean error = FALSE;
@@ -34,8 +35,8 @@ void comandoIguales(ListaExpresion listaExp, int pos1, int pos2)
 }
 
 
-/*
+
 void comandoGuardar(ListaString listaStr)
 {
 
-}*/
+}

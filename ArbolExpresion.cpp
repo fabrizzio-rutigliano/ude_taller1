@@ -139,6 +139,7 @@ ArbolExpresion arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d)
     arbolExpresionParentizar(i,TRUE);
     posicion = arbolExpresionDarMayor(i) + 1;
     ArbolExpresion arbol = new nodoA;
+    
     arbol->info = r;
     arbol->numeroNodo = posicion;
     arbol->hizq = i;
