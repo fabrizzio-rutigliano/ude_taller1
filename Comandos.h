@@ -1,6 +1,7 @@
 # include "ListaString.h"
 # include "ListaExpresion.h"
 # include "Archivos.h"
+# include "TipoError.h"
 
 
 Boolean comandoEsValido(String str);

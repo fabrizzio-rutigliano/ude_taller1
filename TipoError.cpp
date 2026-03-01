@@ -82,6 +82,11 @@ void tipoErrorDesplegar(TipoError e) {
             printf("No se encontro el archivo indicado.\n");
             printf("Verifique que exista y que el nombre sea correcto.\n");
             break;
+        
+        case ERROR_ARCHIVO_YA_EXISTE:
+            printf("Ya existe un archivo con el nombre indicado.\n");
+            printf("Por favor ingrese otro nombe de archivo.\n");
+            break;
     }
 
         printf("\n");
