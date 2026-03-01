@@ -47,6 +47,14 @@ void tipoErrorDesplegar(TipoError e) {
             printf("Ejemplo: 1, 2, 3, ...\n");
             break;
 
+        case ERROR_PARAMETRO_NO_OPERADOR:
+            printf("Se esperaba un operador valido).\n");
+            printf("Ejemplo: +, -, *, /\n");
+            break;
+
+        case ERROR_PARAMETRO_NO_ENTERO_VARIABLE_INVALIDA:
+            printf("Se esperaba un numero entero o una variable X o x.\n");
+            break; 
         // ---------------- Indices ------------------
 
         case ERROR_INDICE_INEXISTENTE:

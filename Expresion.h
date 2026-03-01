@@ -20,4 +20,7 @@ ArbolExpresion expresionDevolverArbolExpresion(Expresion expresion);
 // Copia una expresión
 void expresionCopiar(Expresion &expCopia, Expresion expOriginal);
 
+//Despliega la expresion
+void expresionMostrar(Expresion exp);
+
 #endif // EXPRESION_H_INCLUDED

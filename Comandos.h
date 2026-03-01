@@ -6,10 +6,10 @@
 Boolean comandoEsValido(String str);
 
 //GL
-void comandoSimple(ListaString listaStr);
+void comandoSimple(ListaString listaStr, ListaExpresion &listaExp);
 
 //GL
-void comandoCompuesta(ListaString listaStr);
+void comandoCompuesta(ListaString listaStr, ListaExpresion &listaExp);
 
 //GP
 void comandoCalcular(ListaString listaStr);

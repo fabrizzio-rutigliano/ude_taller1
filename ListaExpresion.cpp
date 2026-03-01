@@ -94,12 +94,13 @@ Boolean listaExpresionExisteIndice(ListaExpresion listaExp, int indice)
 // Precondicion: existe el indice en la lista
 Expresion listaExpresionDevolverExpresionXIndice(ListaExpresion listaExp, int indice)
 {
-    while (listaExp != NULL)
+    ListaExpresion auxList;
+    auxList = listaExp;
+    int auxIndice = 1;
+    while (auxIndice < indice)
     {
-        if (expresionDevolverIndice(listaExp->info) == indice)
-        {
-            return listaExp->info;
-        }
-        listaExp = listaExp->sig;
+        auxIndice++;
+        auxList = auxList->sig;
     }
+    return auxList->info;
 };

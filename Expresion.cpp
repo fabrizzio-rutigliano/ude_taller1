@@ -27,3 +27,9 @@ void expresionCopiar(Expresion &expCopia, Expresion expOriginal){
     expCopia.terminos = NULL;
 	arbolExpresionCopiar(expCopia.terminos, expOriginal.terminos);
 }
+
+//Despliega la expresion
+void expresionMostrar(Expresion exp){
+    printf("%d) ", exp.indice);
+    arbolExpresionDesplegarArbol(exp.terminos);
+}
