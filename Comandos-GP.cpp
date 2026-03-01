@@ -1,5 +1,5 @@
 #include "Comandos.h"
-//GP
+
 //Sintaxis del compando verificada antes de llamar a la funcion en MAIN
 void comandoCalcular(ListaExpresion listaExp, int posLista, int valor)
 {
@@ -9,17 +9,31 @@ void comandoCalcular(ListaExpresion listaExp, int posLista, int valor)
         int resultado; 
         resultado = arbolExpresionEvaluar(expresionDevolverArbolExpresion(listaExpresionDevolverExpresionXIndice(listaExp, posLista)), valor, error);
         if(error == TRUE)
+        {
             //mensaje error division 0
+            //tipoErrorDesplegar(ERROR_DIVISION_POR_CERO);
+        }
+        else
+            printf("\nEl resultado de calcular la expresion es... %d\n", resultado);
     }
 }
 
-//GP
-/*void comandoIguales(ListaString listaStr)
+
+void comandoIguales(ListaExpresion listaExp, int pos1, int pos2)
 {
+    Boolean iguales = FALSE;
+    iguales = arbolExpresionIguales(expresionDevolverArbolExpresion(listaExpresionDevolverExpresionXIndice(listaExp, pos1)),expresionDevolverArbolExpresion(listaExpresionDevolverExpresionXIndice(listaExp, pos2)));
+    if(iguales)
+    {
+        printf("\nLas expresiones son iguales\n");
+    }
+    else
+    {
+        printf("\nLas expresiones no son iguales\n");
+    }
+}
 
-}*/
 
-//GP
 /*
 void comandoGuardar(ListaString listaStr)
 {
