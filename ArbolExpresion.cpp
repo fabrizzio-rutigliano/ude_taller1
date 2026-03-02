@@ -177,7 +177,7 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
                 
                 //printf("\nresultIzq... %d\n",resultIzq);
                 //printf("\nresultDer... %d\n",resultDer);
-                switch (arbol->info.dato.operador)
+                switch (terminoDarOperador(arbol->info))
                 {
                     case '+':
                         int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
