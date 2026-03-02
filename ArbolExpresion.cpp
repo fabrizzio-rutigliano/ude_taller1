@@ -174,28 +174,35 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
                 }
             case OPERADOR:
                 {
-                int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
-                int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                
                 //printf("\nresultIzq... %d\n",resultIzq);
                 //printf("\nresultDer... %d\n",resultDer);
                 switch (arbol->info.dato.operador)
                 {
                     case '+':
+                        int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                        int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
                         return resultIzq + resultDer;
                         break;
                     case '-':
+                        int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                        int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
                         return resultIzq - resultDer;
                         break;
                     case '*':
+                        int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                        int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
                         return resultIzq * resultDer;
                         break;
                     case '/':
+                        int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
                         if(resultDer == 0)
                         {
                             errorCero = TRUE;
                             return 0;
                         }
                         else
+                            int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
                             return resultIzq / resultDer;
                         break;
                     default:
