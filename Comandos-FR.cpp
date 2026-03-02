@@ -23,13 +23,7 @@ void comandoMostrar(ListaString listaStr, ListaExpresion listaExp){
     ListaExpresion aux = listaExp;
     while (aux != NULL) {
         
-        // Obtener y mostrar indice
-        printf("%d - ", expresionDevolverIndice(aux->info));
-
-        // Obtener arbol y mostrar expresion
-        ArbolExpresion arb = expresionDevolverArbolExpresion(aux->info);
-        arbolExpresionDesplegarArbol(arb);
-        
+        expresionMostrar(aux->info);
         printf("\n");
 
         aux = aux->sig;
@@ -61,5 +55,51 @@ Boolean comandoSalir(ListaString listaStr){
     //listaExpresionDestruir(listaExp);
 }
 
+//Comando recuperar, recupera una expresión de un archivo existente y la inserta en la lista de expresiones
+//Precondicion evaluado en el main, el primer string debe ser recuperar.
+void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp)
+{
+    // 1) validar cantidad de parámetros
+    if (listaStringCantElementos(listaStr) != 2) {
+        tipoErrorDesplegar(ERROR_CANT_PARAMETROS_INVALIDA);
+    }
+    else {
 
-//void comandoRecuperar(ListaString listaStr);
+        // 2) obtener nombre de archivo
+        String nomArch;
+        strCrear(nomArch);
+        listaStringObtener(2, listaStr, nomArch);
+
+        // 3) validar nombre alfabético
+        if (!strEsAlfabetico(nomArch)) {
+            tipoErrorDesplegar(ERROR_ARCHIVO_NOMBRE_INVALIDO);
+        }
+        else {
+
+            // 4) validar que exista el archivo
+            if (!existeArchivo(nomArch)) {
+                tipoErrorDesplegar(ERROR_ARCHIVO_NO_ENCONTRADO);
+            }
+            else {
+
+                // 5) levantar árbol desde archivo
+                ArbolExpresion arbol;
+                arbolExpresionCrear(arbol);
+                arbolExpresionLevantar(arbol, nomArch);
+
+                // 6) crear Expresion con siguiente índice e insertar al final
+                int nuevoIndice = listaExpresionIndiceSiguiente(listaExp);
+                Expresion exp = expresionCrear(arbol, nuevoIndice);
+
+                listaExpresionInsertarFinal(listaExp, exp);
+
+                // 7) mostrar expresión
+                printf("\nSe recupero correctamente la expresion:\n");
+                expresionMostrar(exp);
+                printf("\n");
+            }
+        }
+
+        strDestruir(nomArch);
+    }
+}
