@@ -21,8 +21,11 @@ void comandoIguales(ListaString listaStr);
 //GP
 void comandoGuardar(ListaString listaStr);
 
+//FR
 void comandoRecuperar(ListaString listaStr);
 
-void comandoSalir(ListaString listaStr);
+//FR
+Boolean comandoSalir(ListaString listaStr);
 
-void comandoMostrar(ListaString listaStr);
+//FR
+void comandoMostrar(ListaString listaStr, ListaExpresion listaExp);
