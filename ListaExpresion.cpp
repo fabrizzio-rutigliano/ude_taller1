@@ -54,8 +54,10 @@ int listaExpresionIndiceSiguiente(ListaExpresion listaExp)
 void listaExpresionInsertarFinal(ListaExpresion &listaExp, Expresion exp)
 {
     ListaExpresion nuevoNodo = new nodoL;
+    ArbolExpresion arbExp;
     
-    nuevoNodo->info.terminos = NULL; // TODO LLAMAR AL CREAR ARBOL
+    arbolExpresionCrear(arbExp);
+    nuevoNodo->info.terminos = arbExp;
     expresionCopiar(nuevoNodo->info, exp);
     
     nuevoNodo->sig = NULL;

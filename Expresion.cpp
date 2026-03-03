@@ -4,8 +4,10 @@
 Expresion expresionCrear(ArbolExpresion arbol, int indice)
 {
     Expresion exp;
-    exp.indice=indice;
-    exp.terminos=arbol;//TODO pasar el arbol copiado
+    ArbolExpresion arbCopia;
+    exp.indice = indice;
+    arbolExpresionCopiar(arbCopia, arbol);
+    exp.terminos = arbCopia;
     return exp;
 }
 
