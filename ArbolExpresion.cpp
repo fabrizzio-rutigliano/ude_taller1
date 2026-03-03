@@ -154,68 +154,56 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
 {
     int resultIzq = 0;
     int resultDer = 0;
-    if (arbol == NULL)
+    //printf("\ndiscriminante = %d\n", arbol->info.discriminante);
+    switch (arbol->info.discriminante)
     {
-        return 0;
-    }
-    else
-    {
-        //printf("\ndiscriminante = %d\n", arbol->info.discriminante);
-        switch (arbol->info.discriminante)
+        case VALOR:
         {
-            case VALOR:
-                {
-                //printf("valor izq es... %d",arbol->info.dato.valor);
-                return arbol->info.dato.valor;
-                break;
-                }
-            case VARIABLE:
-                {
-                //printf("%c",arbol->info.dato.variable);
-                return val;
-                break;
-                }
-            case OPERADOR:
-                {
-                
-                //printf("\nresultIzq... %d\n",resultIzq);
-                //printf("\nresultDer... %d\n",resultDer);
-                switch (terminoDarOperador(arbol->info))
-                {
-                    case '+':
+            //printf("valor izq es... %d",arbol->info.dato.valor);
+            return arbol->info.dato.valor;
+            break;
+        }
+        case VARIABLE:
+        {
+            //printf("%c",arbol->info.dato.variable);
+            return val;
+            break;
+        }
+        case OPERADOR:
+        {
+            //printf("\nresultIzq... %d\n",resultIzq);
+            //printf("\nresultDer... %d\n",resultDer);
+            switch (terminoDarOperador(arbol->info))
+            {
+                case '+':
+                    resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                    resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                    return resultIzq + resultDer;
+                    break;
+                case '-':
+                    resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                    resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                    return resultIzq - resultDer;
+                    break;
+                case '*':
+                    resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                    resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                    return resultIzq * resultDer;
+                    break;
+                case '/':
+                    resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                    if(resultDer == 0)
+                    {
+                        errorCero = TRUE;
+                        return 0;
+                    }
+                    else
                         resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
-                        resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
-                        return resultIzq + resultDer;
-                        break;
-                    case '-':
-                        resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
-                        resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
-                        return resultIzq - resultDer;
-                        break;
-                    case '*':
-                        resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
-                        resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
-                        return resultIzq * resultDer;
-                        break;
-                    case '/':
-                        resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
-                        if(resultDer == 0)
-                        {
-                            errorCero = TRUE;
-                            return 0;
-                        }
-                        else
-                            resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
-                            return resultIzq / resultDer;
-                        break;
-                    default:
-                        break;
-                }
-                }
-            case PARENTESIS:
-                {
-                break;
-                }
+                        return resultIzq / resultDer;
+                    break;
+                default:
+                    break;
+            }
         }
     }
     return 0;
