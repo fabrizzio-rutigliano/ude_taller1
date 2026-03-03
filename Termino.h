@@ -13,8 +13,14 @@ typedef struct{
         }dato;
 }Termino;
 
-// Carga el estructurado de Termino
-Termino terminoCrear(TipoTermino tipoTermino, int valor, char otro);
+// Crea termino valor
+Termino terminoCrearValor(TipoTermino tipoTermino, int valor);
+
+// Crea termino variable
+Termino terminoCrearVariable(TipoTermino tipoTermino, char variable);
+
+// Crea termino operador
+Termino terminoCrearOperador(TipoTermino tipoTermino, char op);
 
 // Devolver valor del termino según su discriminante.
 void terminoDesplegarTermino(Termino termino);

@@ -1,27 +1,29 @@
 #include "Termino.h"
 
-// Carga el estructurado de Termino **Cambio a funcion
-Termino terminoCrear(TipoTermino tipoTermino, int valor, char otro){
-
+// Crea termino valor
+Termino terminoCrearValor(TipoTermino tipoTermino, int valor){
     Termino termino;
     termino.discriminante = tipoTermino;
-    
-    switch(tipoTermino)
-    {
-    case VALOR:
-        termino.dato.valor = valor;
-        break;
-    case VARIABLE:
-        termino.dato.variable = otro;
-        break;
-    case PARENTESIS:
-        termino.dato.parentesis = otro;
-        break;
-    case OPERADOR:
-        termino.dato.operador = otro;
-        break;    
-    }
-    
+    termino.dato.valor = valor;
+
+    return termino;
+}
+
+// Crea termino variable
+Termino terminoCrearVariable(TipoTermino tipoTermino, char variable){
+    Termino termino;
+    termino.discriminante = tipoTermino;
+    termino.dato.variable = variable;
+
+    return termino;
+}
+
+// Crea termino operador
+Termino terminoCrearOperador(TipoTermino tipoTermino, char op){
+    Termino termino;
+    termino.discriminante = tipoTermino;
+    termino.dato.operador = op;
+
     return termino;
 }
 

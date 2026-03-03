@@ -151,6 +151,8 @@ ArbolExpresion arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d)
 
 int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
 {
+    int resultIzq = 0;
+    int resultDer = 0;
     if (arbol == NULL)
     {
         return 0;
@@ -180,29 +182,29 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
                 switch (terminoDarOperador(arbol->info))
                 {
                     case '+':
-                        int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
-                        int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                        resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                        resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
                         return resultIzq + resultDer;
                         break;
                     case '-':
-                        int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
-                        int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                        resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                        resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
                         return resultIzq - resultDer;
                         break;
                     case '*':
-                        int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
-                        int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                        resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                        resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
                         return resultIzq * resultDer;
                         break;
                     case '/':
-                        int resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
+                        resultDer = arbolExpresionEvaluar(arbol->hder, val, errorCero);
                         if(resultDer == 0)
                         {
                             errorCero = TRUE;
                             return 0;
                         }
                         else
-                            int resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
+                            resultIzq = arbolExpresionEvaluar(arbol->hizq, val, errorCero);
                             return resultIzq / resultDer;
                         break;
                     default:

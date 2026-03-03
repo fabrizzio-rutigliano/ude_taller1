@@ -5,7 +5,7 @@ Expresion expresionCrear(ArbolExpresion arbol, int indice)
 {
     Expresion exp;
     exp.indice=indice;
-    exp.terminos=arbol;
+    exp.terminos=arbol;//TODO pasar el arbol copiado
     return exp;
 }
 

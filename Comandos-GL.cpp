@@ -25,19 +25,20 @@ void comandoSimple(ListaString listaStr, ListaExpresion &listaExp){
         if(strEsEntero(parametro)){
             tipoTerm = VALOR;
             valor = strStringToInt(parametro);
+            term = terminoCrearValor(tipoTerm, valor);
         }else{
             if(strEsVariable(parametro)){
                 tipoTerm = VARIABLE;
                 variableX = strStrToChar(parametro);
+                term = terminoCrearVariable(tipoTerm, variableX);
             }else{
                 parametroValido = FALSE;
             }
         }
 
-        if(parametroValido){
+        if(!parametroValido){
             tipoErrorDesplegar(ERROR_PARAMETRO_NO_ENTERO_VARIABLE_INVALIDA);
         }else{
-            term = terminoCrear(tipoTerm, valor, variableX);
             arbolExpresionCrear(arbExp);
             arbolExpresionInsertarTermino(arbExp, term, 1);
             indice = listaExpresionIndiceSiguiente(listaExp);
@@ -87,9 +88,11 @@ void comandoCompuesta(ListaString listaStr, ListaExpresion &listaExp){
                     abbIzq = expresionDevolverArbolExpresion(expIzq);
                     abbDer = expresionDevolverArbolExpresion(expDer);
 
+                    // TODO hacer copia limpia de abbIzq y abbDer    
+
                     op = strStrToChar(param2);
                     tipoTerm = OPERADOR;
-                    term = terminoCrear(tipoTerm, 0, op);
+                    term = terminoCrearOperador(tipoTerm, op);
                     abbCons = arbolExpresionCons(term, abbIzq, abbDer);
 
                     indice = listaExpresionIndiceSiguiente(listaExp);

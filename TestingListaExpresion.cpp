@@ -66,23 +66,23 @@ void testListaExpresionModulo()
         // Expresion 1: indice 1, arbol con un VALOR 5
         ArbolExpresion a1;
         arbolExpresionCrear(a1);
-        Termino t1 = terminoCrear(VALOR, 5, 0);
+        Termino t1 = terminoCrearValor(VALOR, 5);
         arbolExpresionInsertarTermino(a1, t1, 1);
         Expresion e1 = expresionCrear(a1, 1);
 
         // Expresion 2: indice 3, arbol con una VARIABLE 'x'
         ArbolExpresion a2;
         arbolExpresionCrear(a2);
-        Termino t2 = terminoCrear(VARIABLE, 0, 'x');
+        Termino t2 = terminoCrearVariable(VARIABLE, 'x');
         arbolExpresionInsertarTermino(a2, t2, 1);
         Expresion e2 = expresionCrear(a2, 3);
 
         // Expresion 3: indice 2, arbol con (5 + 3)
         ArbolExpresion a3;
         arbolExpresionCrear(a3);
-        Termino operador = terminoCrear(OPERADOR, 0, '+');
-        Termino valor_1 = terminoCrear(VALOR, 5, 0);
-        Termino valor_2 = terminoCrear(VALOR, 3, 0);
+        Termino operador = terminoCrearOperador(OPERADOR, '+');
+        Termino valor_1 = terminoCrearValor(VALOR, 5);
+        Termino valor_2 = terminoCrearValor(VALOR, 3);
         arbolExpresionInsertarTermino(a3,operador, 2);
         arbolExpresionInsertarTermino(a3, valor_1, 1);
         arbolExpresionInsertarTermino(a3, valor_2, 3);
@@ -139,14 +139,14 @@ void testListaExpresionModulo()
         // Creamos 2 expresiones simples
         ArbolExpresion a1;
         arbolExpresionCrear(a1);
-        arbolExpresionInsertarTermino(a1, terminoCrear(VALOR, 10, 0), 1);
+        arbolExpresionInsertarTermino(a1, terminoCrearValor(VALOR, 10), 1);
         Expresion e1 = expresionCrear(a1, 10);
 
         ArbolExpresion a2;
         arbolExpresionCrear(a2);
-        Termino operador = terminoCrear(OPERADOR, 0, '+');
-        Termino valor_1 = terminoCrear(VALOR, 5, 0);
-        Termino valor_2 = terminoCrear(VALOR, 3, 0);
+        Termino operador = terminoCrearOperador(OPERADOR, '+');
+        Termino valor_1 = terminoCrearValor(VALOR, 5);
+        Termino valor_2 = terminoCrearValor(VALOR, 3);
         arbolExpresionInsertarTermino(a2,operador, 2);
         arbolExpresionInsertarTermino(a2, valor_1, 1);
         arbolExpresionInsertarTermino(a2, valor_2, 3);
