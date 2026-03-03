@@ -3,9 +3,6 @@
 # include "Archivos.h"
 # include "TipoError.h"
 
-
-Boolean comandoEsValido(String str);
-
 //GL
 void comandoSimple(ListaString listaStr, ListaExpresion &listaExp);
 
@@ -13,19 +10,22 @@ void comandoSimple(ListaString listaStr, ListaExpresion &listaExp);
 void comandoCompuesta(ListaString listaStr, ListaExpresion &listaExp);
 
 //GP
-void comandoCalcular(ListaString listaStr);
+void comandoCalcular(ListaString lstring, ListaExpresion listaExp);
 
 //GP
-void comandoIguales(ListaString listaStr);
+void comandoIguales(ListaString lstring, ListaExpresion listaExp);
 
 //GP
-void comandoGuardar(ListaString listaStr);
-
-//FR
-void comandoRecuperar(ListaString listaStr);
-
-//FR
-Boolean comandoSalir(ListaString listaStr);
+void comandoGuardar(ListaString lstring, ListaExpresion listaExp);
 
 //FR
 void comandoMostrar(ListaString listaStr, ListaExpresion listaExp);
+
+//FR
+void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &salir), ListaExp;
+
+//FR
+void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp);
+
+
+

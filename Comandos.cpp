@@ -231,11 +231,10 @@ void comandoMostrar(ListaString listaStr, ListaExpresion listaExp){
     }
 }
 
-//Comando salir, es un flag que se le pasa al main que se encarga de liberar la memoria dinámica. 
+// Comando salir, se encarga de liberar la memoria dinámica y cerrar el programa.
 // Precondicion evaluado en el main, el primer string debe ser Salir.
-Boolean comandoSalir(ListaString listaStr){
-    
-    Boolean salir = FALSE;
+// Precondicion, el boolean salir debe venir en FALSE.
+void comandoSalir(ListaString &listaStr, ListaExpresion &ListaExp, Boolean &salir){
     
     // Validar cantidad de parámetros
     if (listaStringCantElementos(listaStr) != 1) {
@@ -243,14 +242,15 @@ Boolean comandoSalir(ListaString listaStr){
         ;   // no salir, hubo error
     }
     else{
+        // Liberar memoria
+        ListaStringDestruir(listaStr)
+        listaExpresionDestruir(listaExp);
+        
+        printf("\nCerrando programa...\n");
+
         salir = TRUE;
     }
-    
-    return salir;        // salir TRUE que recibe el main para liberar la memoria
 
-    // Limpieza final que realiza el main
-    //strDestruir(entrada);
-    //listaExpresionDestruir(listaExp);
 }
 
 //Comando recuperar, recupera una expresión de un archivo existente y la inserta en la lista de expresiones
