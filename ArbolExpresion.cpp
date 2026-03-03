@@ -149,6 +149,7 @@ ArbolExpresion arbolExpresionCons(Termino r, ArbolExpresion i, ArbolExpresion d)
     return arbol;
 }
 
+//Precondicion: el arbol nunca llega nulo
 int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
 {
     int resultIzq = 0;
