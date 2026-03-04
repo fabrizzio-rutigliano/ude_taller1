@@ -445,6 +445,11 @@ Boolean comandoEsValido(String str){
     strCrear(compuesta);
     char auxComp[] = "COMPUESTA";
     strCop(compuesta, auxComp);
+
+    String mostrar;
+    strCrear(mostrar);
+    char auxMostrar[] = "MOSTRAR";
+    strCop(mostrar, auxMostrar);
     
     String calcular;
     strCrear(calcular);
@@ -481,6 +486,8 @@ Boolean comandoEsValido(String str){
             check = TRUE;
         else if (strEq(str, iguales) == TRUE)
             check = TRUE;
+        else if (strEq(str, mostrar) == TRUE)
+            check = TRUE;
         else if (strEq(str, guardar) == TRUE)
             check = TRUE;
         else if (strEq(str, recuperar) == TRUE)
@@ -492,6 +499,7 @@ Boolean comandoEsValido(String str){
     strDestruir(simple);
     strDestruir(compuesta);
     strDestruir(calcular);
+    strDestruir(mostrar);
     strDestruir(iguales);
     strDestruir(guardar);
     strDestruir(recuperar);
