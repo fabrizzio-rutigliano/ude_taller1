@@ -234,7 +234,7 @@ void comandoMostrar(ListaString listaStr, ListaExpresion listaExp){
 // Comando salir, se encarga de liberar la memoria dinámica y cerrar el programa.
 // Precondicion evaluado en el main, el primer string debe ser Salir.
 // Precondicion, el boolean salir debe venir en FALSE.
-void comandoSalir(ListaString &listaStr, ListaExpresion &ListaExp, Boolean &salir){
+void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &salir){
     
     // Validar cantidad de parámetros
     if (listaStringCantElementos(listaStr) != 1) {
@@ -243,7 +243,7 @@ void comandoSalir(ListaString &listaStr, ListaExpresion &ListaExp, Boolean &sali
     }
     else{
         // Liberar memoria
-        ListaStringDestruir(listaStr)
+        listaStringDestruir(listaStr);
         listaExpresionDestruir(listaExp);
         
         printf("\nCerrando programa...\n");
