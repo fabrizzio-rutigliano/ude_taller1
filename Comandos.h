@@ -22,7 +22,7 @@ void comandoGuardar(ListaString lstring, ListaExpresion listaExp);
 void comandoMostrar(ListaString listaStr, ListaExpresion listaExp);
 
 //FR
-void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &salir), ListaExp;
+void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &salir);
 
 //FR
 void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp);
