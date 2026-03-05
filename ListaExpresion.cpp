@@ -57,7 +57,7 @@ void listaExpresionInsertarFinal(ListaExpresion &listaExp, Expresion exp)
     ArbolExpresion arbExp;
     
     arbolExpresionCrear(arbExp);
-    nuevoNodo->info.terminos = arbExp;
+    nuevoNodo->info.terminos = arbExp; // TODO LLAMAR AL CREAR ARBOL
     expresionCopiar(nuevoNodo->info, exp);
     
     nuevoNodo->sig = NULL;

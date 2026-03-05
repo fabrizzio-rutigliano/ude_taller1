@@ -73,30 +73,11 @@ void terminoDesplegarTermino(Termino termino){
 
 // Precondición: El archivo viene abierto para escritura.
 void terminoBajar(Termino term, FILE * f ){
-
-    String s;
-    strCrear(s);
-    switch(term.discriminante)
-    {
-    case VALOR:
-        strIntToStr(term.dato.valor, s);
-        Bajar_String(s, f);
-        break;
-    case VARIABLE:
-        strCharToStr(term.dato.variable, s);
-        Bajar_String(s, f);
-        break;
-    case PARENTESIS:
-        strCharToStr(term.dato.parentesis, s);
-        Bajar_String(s, f);
-        break;
-    case OPERADOR:
-        strCharToStr(term.dato.operador, s);
-        Bajar_String(s, f);
-        break;    
+    if(term.discriminante == VALOR){
+        fwrite (&term.dato.valor, sizeof(int), 1, f);
+    }else{
+        fwrite (&term.dato.variable, sizeof(char), 1, f);
     }
-
-    strDestruir(s);
 }
 
 // Precondición: El archivo viene abierto para lectura.
