@@ -204,15 +204,14 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
                 default:
                     break;
             }
+        case PARENTESIS:
+        {
+            break;
         }
     }
     return 0;
 }
 
-/*Boolean arbolExpresionExisteDivisionCero(ArbolExpresion arbol)
-{
-
-}*/
 
 Boolean arbolExpresionIguales(ArbolExpresion arbol1, ArbolExpresion arbol2)
 {

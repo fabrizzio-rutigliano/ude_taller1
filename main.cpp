@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Comandos.h"
+//#include "Comandos.h"
 
 //void testStringModulo(); // definicion auxiliar para poder compilar
 //void testTerminoModulo();
@@ -7,6 +7,9 @@
 //void testExpresionModulo();
 //void testListaStringModulo();
 //void testListaExpresionModulo();
+void testComandosModulo();
+
+
 
 int main() {
     
@@ -18,7 +21,9 @@ int main() {
     //testListaStringModulo();
     //testListaExpresionModulo();
     // Estructura principal
+    void testComandosModulo();
     
+    /*
     // Inicializar lista de expresiones
     ListaExpresion listaExp;
     listaExpresionCrear(listaExp);
@@ -120,4 +125,6 @@ int main() {
     strDestruir(guardar);
     strDestruir(recuperar);
     strDestruir(salir_str);
+
+    */
 }
