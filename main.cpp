@@ -21,7 +21,7 @@ int main() {
     //testListaStringModulo();
     //testListaExpresionModulo();
     // Estructura principal
-    void testComandosModulo();
+    testComandosModulo();
     
     /*
     // Inicializar lista de expresiones

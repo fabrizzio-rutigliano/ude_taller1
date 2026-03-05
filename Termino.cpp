@@ -79,18 +79,22 @@ void terminoBajar(Termino term, FILE * f ){
     switch(term.discriminante)
     {
     case VALOR:
+        //guardar directamente el int
         strIntToStr(term.dato.valor, s);
         Bajar_String(s, f);
         break;
     case VARIABLE:
+        //bajar char
         strCharToStr(term.dato.variable, s);
         Bajar_String(s, f);
         break;
     case PARENTESIS:
+        //bajar char
         strCharToStr(term.dato.parentesis, s);
         Bajar_String(s, f);
         break;
     case OPERADOR:
+        //bajar char
         strCharToStr(term.dato.operador, s);
         Bajar_String(s, f);
         break;    
