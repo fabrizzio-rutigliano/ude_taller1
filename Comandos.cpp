@@ -3,6 +3,7 @@
 void comandoSimple(ListaString listaStr, ListaExpresion &listaExp){
 
     String parametro;
+    strCrear(parametro);
     char variableX;
     TipoTermino tipoTerm;
     Termino term;
@@ -250,6 +251,21 @@ void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &sali
 
         salir = TRUE;
     }
+/*
+void liberarListaExpresiones(ListaExpresion &listaexpre) {
+    while (listaexpre != NULL) {
+        nodoL * liberarNodo = listaexpre;
+        listaexpre = listaexpre->sig;
+        liberarArbolDeExpresion(liberarNodo->expre);
+        delete liberarNodo;
+        liberarNodo = NULL;
+    }
+}
+
+//en expresion.h
+void liberarArbolDeExpresion(Expresion &expre) {
+	arbolExpresionDestruir(expre.terminos);
+}*/
 
 }
 

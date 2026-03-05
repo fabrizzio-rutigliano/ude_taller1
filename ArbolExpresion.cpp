@@ -204,12 +204,14 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
                 default:
                     break;
             }
+        }
         case PARENTESIS:
         {
             break;
         }
     }
     return 0;
+    
 }
 
 
