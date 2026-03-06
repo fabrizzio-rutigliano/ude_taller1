@@ -208,6 +208,8 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
                     break;
             }
         }
+        default:
+            break;
        
     }
     return 0;

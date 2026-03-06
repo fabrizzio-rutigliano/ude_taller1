@@ -27,5 +27,8 @@ void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &sali
 //FR
 void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp);
 
+//SOLO POR MOTIVOS DE TESTING
+void procesarEntrada(ListaString &lista, String entrada);
+
 
 

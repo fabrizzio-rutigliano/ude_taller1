@@ -228,8 +228,6 @@ void comandoMostrar(ListaString listaStr, ListaExpresion listaExp){
     while (aux != NULL) {
         
         expresionMostrar(aux->info);
-        printf("\n");
-
         aux = aux->sig;
     }
 

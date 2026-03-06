@@ -34,6 +34,7 @@ void expresionCopiar(Expresion &expCopia, Expresion expOriginal){
 void expresionMostrar(Expresion exp){
     printf("%d) ", exp.indice);
     arbolExpresionDesplegarArbol(exp.terminos);
+    printf("\n");
 }
 
 // Liberar memoria dinamica del arbolexpresion
