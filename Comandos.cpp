@@ -125,11 +125,11 @@ void comandoCalcular(ListaString lstring, ListaExpresion listaExp)
         String str,str2;
         strCrear(str);
         strCrear(str2);
-        listaStringObtener(2, lstring, str);
+        listaStringObtener(1, lstring, str);
         if(strEsEnteroPositivo(str))
         {
             int posLista = strStringToInt(str);
-            listaStringObtener(3, lstring, str2);
+            listaStringObtener(2, lstring, str2);
             if(strEsEntero(str2))
             {
                 int valor = strStringToInt(str2);
@@ -163,8 +163,8 @@ void comandoIguales(ListaString lstring, ListaExpresion listaExp)
         String str,str2;
         strCrear(str);
         strCrear(str2);
-        listaStringObtener(2, lstring, str);
-        listaStringObtener(3, lstring, str2);
+        listaStringObtener(1, lstring, str);
+        listaStringObtener(2, lstring, str2);
         if(strEsEnteroPositivo(str) && strEsEnteroPositivo(str2))
         {
             Boolean iguales = FALSE;
@@ -196,7 +196,7 @@ void comandoGuardar(ListaString lstring, ListaExpresion listaExp)
         String str,str2;
         strCrear(str);
         strCrear(str2);
-        listaStringObtener(2, lstring, str);
+        listaStringObtener(1, lstring, str);
         if(strEsEnteroPositivo(str))
         {
             if(existeArchivo(str2))
@@ -276,7 +276,7 @@ void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp)
         // 2) obtener nombre de archivo
         String nomArch;
         strCrear(nomArch);
-        listaStringObtener(2, listaStr, nomArch);
+        listaStringObtener(1, listaStr, nomArch);
 
         // 3) validar nombre alfabético
         if (!strEsAlfabetico(nomArch)) {

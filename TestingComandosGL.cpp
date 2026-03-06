@@ -10,6 +10,7 @@ void testComandosMostrarCalcularModulo()
     char entrada2[] = "simple x";
     char entradaMostrar[] = "mostrar";
     char entradaComponer[] = "compuesta 1 + 2";
+    char entradaCalcular[] = "calcular 3 10";
     listaStringCrear(lista);
     listaStringSplit(entrada, lista);
 
@@ -40,7 +41,7 @@ void testComandosMostrarCalcularModulo()
 
     procesarEntrada(lista, entradaComponer);
     comandoCompuesta(lista, lisExp);
-
+    //comandoCalcular()
 
 
 
