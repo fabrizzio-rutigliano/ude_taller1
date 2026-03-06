@@ -2,6 +2,7 @@
 
 void comandoSimple(ListaString listaStr, ListaExpresion &listaExp){
 
+    
     String parametro;
     strCrear(parametro);
     char variableX;
@@ -13,13 +14,14 @@ void comandoSimple(ListaString listaStr, ListaExpresion &listaExp){
     int valor = 0;
     int largoLista = 0;
     int indice = 0;
-
+    
     largoLista = listaStringCantElementos(listaStr);
     if(largoLista != 2){
         tipoErrorDesplegar(ERROR_CANT_PARAMETROS_INVALIDA);
     }else{
-        listaStringObtener(1, listaStr, parametro);
-
+        
+        listaStringObtener(2, listaStr, parametro);
+        
         if(strEsEntero(parametro)){
             tipoTerm = VALOR;
             valor = strStringToInt(parametro);
@@ -33,7 +35,7 @@ void comandoSimple(ListaString listaStr, ListaExpresion &listaExp){
                 parametroValido = FALSE;
             }
         }
-
+        
         if(!parametroValido){
             tipoErrorDesplegar(ERROR_PARAMETRO_NO_ENTERO_VARIABLE_INVALIDA);
         }else{
@@ -44,8 +46,11 @@ void comandoSimple(ListaString listaStr, ListaExpresion &listaExp){
             listaExpresionInsertarFinal(listaExp, exp);
 
             expresionMostrar(exp);
+            
         }
     }
+    arbolExpresionDestruir(arbExp);
+    strDestruir(parametro);
 }
 
 void comandoCompuesta(ListaString listaStr, ListaExpresion &listaExp){
@@ -251,22 +256,6 @@ void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &sali
 
         salir = TRUE;
     }
-/*
-void liberarListaExpresiones(ListaExpresion &listaexpre) {
-    while (listaexpre != NULL) {
-        nodoL * liberarNodo = listaexpre;
-        listaexpre = listaexpre->sig;
-        liberarArbolDeExpresion(liberarNodo->expre);
-        delete liberarNodo;
-        liberarNodo = NULL;
-    }
-}
-
-//en expresion.h
-void liberarArbolDeExpresion(Expresion &expre) {
-	arbolExpresionDestruir(expre.terminos);
-}*/
-
 }
 
 //Comando recuperar, recupera una expresión de un archivo existente y la inserta en la lista de expresiones

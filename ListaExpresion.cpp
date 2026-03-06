@@ -10,20 +10,14 @@ void listaExpresionCrear(ListaExpresion &listaExp)
 //Usar selectora
 void listaExpresionDestruir(ListaExpresion &listaExp)
 {
-    
-    while (listaExp != NULL)
-    {
-        ListaExpresion aux = listaExp;
+     while(listaExp != NULL) {
+        nodoL * liberarNodo = listaExp;
         listaExp = listaExp->sig;
-
-        // Liberar el árbol asociado a la expresión
-        ArbolExpresion arbol;
-        arbolExpresionCrear(arbol);
-        arbol = expresionDevolverArbolExpresion(aux->info);
-        arbolExpresionDestruir(arbol);
         
-
-        delete aux;
+        expresionLiberarArbolDeExpresion(liberarNodo->info);
+        
+        delete liberarNodo;
+        liberarNodo = NULL;
     }
 };
 

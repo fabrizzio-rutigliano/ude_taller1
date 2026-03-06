@@ -30,8 +30,13 @@ void expresionCopiar(Expresion &expCopia, Expresion expOriginal){
 	arbolExpresionCopiar(expCopia.terminos, expOriginal.terminos);
 }
 
-//Despliega la expresion
+// Despliega la expresion
 void expresionMostrar(Expresion exp){
     printf("%d) ", exp.indice);
     arbolExpresionDesplegarArbol(exp.terminos);
+}
+
+// Liberar memoria dinamica del arbolexpresion
+void expresionLiberarArbolDeExpresion(Expresion &exp){
+	arbolExpresionDestruir(exp.terminos);
 }

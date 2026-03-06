@@ -69,12 +69,15 @@ void arbolExpresionDestruir(ArbolExpresion &arbol)
 
 void arbolExpresionCopiar(ArbolExpresion &ar1, ArbolExpresion ar2)
 {
-    delete[] ar1;
-    ar1 = new nodoA;
-    ar1->info = ar2 ->info;
-    ar1->numeroNodo = darNumeroNodo(ar2);
-    ar1->hizq = ar2->hizq;
-    ar1->hder = ar2->hder;
+    if(ar2 != NULL){
+        ar1 = new nodoA;
+
+        ar1->info = ar2->info;
+        ar1->numeroNodo = ar2->numeroNodo;
+
+        arbolExpresionCopiar(ar1->hizq, ar2->hizq);
+        arbolExpresionCopiar(ar1->hder, ar2->hder);
+    }
 }
 
 int arbolExpresionDarMayor(ArbolExpresion arbol)
@@ -205,10 +208,7 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
                     break;
             }
         }
-        case PARENTESIS:
-        {
-            break;
-        }
+       
     }
     return 0;
     
