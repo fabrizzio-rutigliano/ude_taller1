@@ -101,7 +101,7 @@ void comandoCompuesta(ListaString listaStr, ListaExpresion &listaExp){
                     op = strStrToChar(param2);
                     tipoTerm = OPERADOR;
                     term = terminoCrearOperador(tipoTerm, op);
-                    abbCons = arbolExpresionCons(term, abbIzq, abbDer);
+                    abbCons = arbolExpresionCons(term, abbIzqCopia, abbDerCopia);
 
                     indice = listaExpresionIndiceSiguiente(listaExp);
                     expCons = expresionCrear(abbCons, indice);
