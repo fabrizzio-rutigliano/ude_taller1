@@ -65,15 +65,16 @@ void listaStringSplit(String entrada, ListaString &lista){
 void listaStringObtener(int indice, ListaString lista, String &str){
     Boolean encontre = FALSE;
     ListaString aux = lista;
-    int count = 1;
+    int count = 0;
 
     while(aux != NULL && !encontre){
         if(count == indice){
             strCop(str, aux ->palabra);
             encontre = TRUE;
+        }else{
+            count ++;
+            aux = aux ->sig;
         }
-        count ++;
-        aux = aux ->sig;
     }
 }
 

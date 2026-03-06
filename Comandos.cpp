@@ -20,7 +20,7 @@ void comandoSimple(ListaString listaStr, ListaExpresion &listaExp){
         tipoErrorDesplegar(ERROR_CANT_PARAMETROS_INVALIDA);
     }else{
         
-        listaStringObtener(2, listaStr, parametro);
+        listaStringObtener(1, listaStr, parametro);
         
         if(strEsEntero(parametro)){
             tipoTerm = VALOR;
@@ -46,10 +46,10 @@ void comandoSimple(ListaString listaStr, ListaExpresion &listaExp){
             listaExpresionInsertarFinal(listaExp, exp);
 
             expresionMostrar(exp);
-            
+            arbolExpresionDestruir(arbExp);
         }
     }
-    arbolExpresionDestruir(arbExp);
+    
     strDestruir(parametro);
 }
 
@@ -69,6 +69,10 @@ void comandoCompuesta(ListaString listaStr, ListaExpresion &listaExp){
     if(largoLista != 4) {
         tipoErrorDesplegar(ERROR_CANT_PARAMETROS_INVALIDA);
     }else{
+        strCrear(param1);
+        strCrear(param2);
+        strCrear(param3);
+
         listaStringObtener(1, listaStr, param1);
         listaStringObtener(2, listaStr, param2);
         listaStringObtener(3, listaStr, param3);
@@ -107,6 +111,9 @@ void comandoCompuesta(ListaString listaStr, ListaExpresion &listaExp){
                 }
             }
         }
+        strDestruir(param1);
+        strDestruir(param2);
+        strDestruir(param3);
     }
 }
 

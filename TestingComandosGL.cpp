@@ -9,6 +9,7 @@ void testComandosMostrarCalcularModulo()
     char entrada[] = "simple 45";
     char entrada2[] = "simple x";
     char entradaMostrar[] = "mostrar";
+    char entradaComponer[] = "compuesta 1 + 2";
     listaStringCrear(lista);
     listaStringSplit(entrada, lista);
 
@@ -21,6 +22,7 @@ void testComandosMostrarCalcularModulo()
     //Testing Comando Simple
     //------------------------------------------------------------------------------------------------------------------------
     printf("\n-----------------------------Testing comando mostrar-----------------------------------\n\n");
+    procesarEntrada(lista, entrada);
     comandoSimple(lista, lisExp);
     //arbolExpresionDesplegarArbol(expresionDevolverArbolExpresion(listaExpresionDevolverExpresionXIndice(lisExp,1)));
 
@@ -36,12 +38,12 @@ void testComandosMostrarCalcularModulo()
     //------------------------------------------------------------------------------------------------------------------------
     printf("\n-----------------------------Testing comando Calcular-----------------------------------\n\n");
 
-    listaStringDestruir(lista);
-    listaExpresionDestruir(lisExp);
+    procesarEntrada(lista, entradaComponer);
+    comandoCompuesta(lista, lisExp);
 
 
 
-    
+
 }
 
 void procesarEntrada(ListaString &lista, String entrada)
