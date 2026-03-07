@@ -1,3 +1,6 @@
+#ifndef LISTASTRING_H_INCLUDED
+#define LISTASTRING_H_INCLUDED
+
 #include "String.h"
 
 typedef struct nodoS{
@@ -30,4 +33,4 @@ int listaStringCantElementos(ListaString lista);
 //Despliega la listaString completa - solo por motivos de testing - 
 void listaStringDesplegar(ListaString lista);
 
-
+#endif // LISTASTRING_H_INCLUDED

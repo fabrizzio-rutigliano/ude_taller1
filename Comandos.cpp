@@ -189,30 +189,80 @@ void comandoIguales(ListaString lstring, ListaExpresion listaExp)
         tipoErrorDesplegar(ERROR_CANT_PARAMETROS_INVALIDA);
 }
 
-void comandoGuardar(ListaString lstring, ListaExpresion listaExp)
-{
-    if(listaStringCantElementos(lstring) == 3)
+void comandoGuardar(ListaString lstring, ListaExpresion listaExp){
+    // 1) Chequear la cantidad de elementos
+    if (listaStringCantElementos(lstring) != 3)
     {
-        String str,str2;
-        strCrear(str);
-        strCrear(str2);
-        listaStringObtener(1, lstring, str);
-        if(strEsEnteroPositivo(str))
-        {
-            if(existeArchivo(str2))
-                tipoErrorDesplegar(ERROR_ARCHIVO_YA_EXISTE);
-            else
-                arbolExpresionBajar(expresionDevolverArbolExpresion(listaExpresionDevolverExpresionXIndice(listaExp, strStringToInt(str))), str2);
-        }
-        else
-            tipoErrorDesplegar(ERROR_PARAMETRO_NO_ENTERO_POSITIVO);
-
-        strDestruir(str);
-        strDestruir(str2);
+        tipoErrorDesplegar(ERROR_CANT_PARAMETROS_INVALIDA);
     }
     else
-        tipoErrorDesplegar(ERROR_CANT_PARAMETROS_INVALIDA);
+    {
+        String strIndice, strNombre, nomArch;
+        strCrear(strIndice);
+        strCrear(strNombre);
+        strCrear(nomArch);
+
+        // guardar indice y nombre de archivo
+        listaStringObtener(1, lstring, strIndice);
+        listaStringObtener(2, lstring, strNombre);
+    // 2) Chequear que el indice sea entero positivo
+        if (!strEsEnteroPositivo(strIndice))
+        {
+            tipoErrorDesplegar(ERROR_PARAMETRO_NO_ENTERO_POSITIVO);
+        }
+        else
+        {
+            int indice = strStringToInt(strIndice);
+    // 3) Chequear que el indice sea válido
+            if (!listaExpresionExisteIndice(listaExp, indice))
+            {
+                tipoErrorDesplegar(ERROR_INDICE_INEXISTENTE);
+            }
+    // 4) Que el nombre del archivo sea alfabetico
+            else if (!strEsAlfabetico(strNombre))
+            {
+                tipoErrorDesplegar(ERROR_ARCHIVO_NOMBRE_INVALIDO);
+            }
+            else
+            {
+                // construir terminacion .txt
+                char buffer[MAX];
+                int i = 0;
+
+                while (strNombre[i] != '\0')
+                {
+                    buffer[i] = strNombre[i];
+                    i++;
+                }
+
+                buffer[i++] = '.';
+                buffer[i++] = 't';
+                buffer[i++] = 'x';
+                buffer[i++] = 't';
+                buffer[i] = '\0';
+
+                strCop(nomArch, buffer);
+
+                if (existeArchivo(nomArch))
+                {
+                    tipoErrorDesplegar(ERROR_ARCHIVO_YA_EXISTE);
+                }
+                else
+                {
+                    arbolExpresionBajar(expresionDevolverArbolExpresion(listaExpresionDevolverExpresionXIndice(listaExp, indice)), nomArch);
+
+                    printf("\nExpresion %d guardada correctamente en ", indice);
+                    strPrint(nomArch);
+                    printf("\n");
+                }
+            }
+        }
+        strDestruir(strIndice);
+        strDestruir(strNombre);
+        strDestruir(nomArch);
+    }
 }
+
 
 //Comando desplegar la lista de expresiones con su indice, y la expresion por pantalla. 
 // Precondicion evaluado en el main, el primer string debe ser Mostrar.

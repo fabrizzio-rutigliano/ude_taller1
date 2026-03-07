@@ -8,7 +8,8 @@
 //void testListaStringModulo();
 //void testListaExpresionModulo();
 //void testComandosMostrarCalcularModulo();
-void testComandosModulo();
+//void testComandosModulo();
+void testComandoGuardar();
 
 int main() {
     
@@ -21,7 +22,9 @@ int main() {
     //testListaExpresionModulo();
     // Estructura principal
     //testComandosMostrarCalcularModulo();
-    testComandosModulo();
+    //testComandosModulo();
+    testComandoGuardar();
+
     
     /*
     // Inicializar lista de expresiones
