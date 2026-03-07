@@ -9,7 +9,7 @@
 //void testListaExpresionModulo();
 //void testComandosMostrarCalcularModulo();
 //void testComandosModulo();
-void testComandoGuardar();
+//void testComandoGuardar();
 
 int main() {
     
@@ -23,10 +23,10 @@ int main() {
     // Estructura principal
     //testComandosMostrarCalcularModulo();
     //testComandosModulo();
-    testComandoGuardar();
+    //testComandoGuardar();
 
     
-    /*
+    
     // Inicializar lista de expresiones
     ListaExpresion listaExp;
     listaExpresionCrear(listaExp);
@@ -62,7 +62,7 @@ int main() {
             listaStringCrear(listaStr);
             listaStringSplit(entrada, listaStr);
 
-            if (listaStringCantElementos(listaStr) == 0) {
+            if (listaStringCantElementos(listaStr) == 0) {//este if no va
                 tipoErrorDesplegar(ERROR_LINEA_VACIA);
                 listaStringDestruir(listaStr);
             }
@@ -71,7 +71,7 @@ int main() {
                 // Paso 3: obtener comando
                 String cmd;
                 strCrear(cmd);
-                listaStringObtener(1, listaStr, cmd);
+                listaStringObtener(0, listaStr, cmd);
 
                 // Paso 4: validar comando
                 if (!comandoEsValido(cmd)) {
@@ -115,6 +115,7 @@ int main() {
                 }
             }
         }
+    // verificar esto strDestruir(entrada);
     }
 
 
@@ -129,5 +130,5 @@ int main() {
     strDestruir(recuperar);
     strDestruir(salir_str);
 
-    */
+    
 }
