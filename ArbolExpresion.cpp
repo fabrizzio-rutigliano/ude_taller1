@@ -78,6 +78,9 @@ void arbolExpresionCopiar(ArbolExpresion &ar1, ArbolExpresion ar2)
         arbolExpresionCopiar(ar1->hizq, ar2->hizq);
         arbolExpresionCopiar(ar1->hder, ar2->hder);
     }
+    else{
+      ar1 = NULL;
+    }
 }
 
 int arbolExpresionDarMayor(ArbolExpresion arbol)
@@ -272,6 +275,7 @@ void arbolExpresionBajarAux(ArbolExpresion a, FILE * f)
     if (a != NULL)
     {
         int indice;
+        printf("\nEscribiendo nodo %d", darNumeroNodo(a));
         terminoBajar(a->info, f);
         indice = darNumeroNodo(a);
         fwrite (&indice, sizeof(int), 1, f);
@@ -285,6 +289,24 @@ void arbolExpresionBajarAux(ArbolExpresion a, FILE * f)
 void arbolExpresionBajar(ArbolExpresion a, String nomArch)
 {
     FILE *f = fopen(nomArch, "wb");
+
+    if (f == NULL) {
+        printf("\nERROR: no se pudo abrir el archivo\n");
+        return;
+    }
+
+    if (a == NULL) {
+        printf("\nERROR: el arbol recibido es NULL\n");
+        fclose(f);
+        return;
+    }
+
+    printf("\nArchivo abierto correctamente\n");
+    printf("Arbol no nulo, comenzando escritura...\n");
+
+    arbolExpresionBajarAux(a, f);
+    fclose(f);
+
     arbolExpresionBajarAux(a, f);
     fclose(f);
 }
