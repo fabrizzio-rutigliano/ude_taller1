@@ -3,6 +3,10 @@
 
 void testComandoGuardar() {
 
+    printf("\n==================================================");
+    printf("\nTEST COMANDO GUARDAR");
+    printf("\n==================================================\n");
+
     // -------------------------------------------------
     // 1) Crear lista de expresiones
     // -------------------------------------------------
@@ -23,7 +27,7 @@ void testComandoGuardar() {
     printf("[OK] Strings s1 y s2 creados\n");
 
     strCop(s1, (char*)"SIMPLE");
-    strCop(s2, (char*)"5");
+    strCop(s2, (char*)"10");
     printf("[OK] Strings cargados: SIMPLE 5\n");
 
     listaStringInsertarElemento(s1, listaSimple);
@@ -93,4 +97,79 @@ void testComandoGuardar() {
     printf("[OK] ListaExpresion destruida\n");
 
     printf("\nVerificacion manual: deberia haberse creado el archivo prueba.txt\n");
+}
+
+
+
+void testComandoRecuperar() {
+
+    printf("\n==================================================");
+    printf("\nTEST COMANDO RECUPERAR");
+    printf("\n==================================================\n");
+
+    // -------------------------------------------------
+    // 1) Crear lista de expresiones vacía
+    // -------------------------------------------------
+
+    ListaExpresion listaExp;
+    listaExpresionCrear(listaExp);
+
+    printf("\n[OK] ListaExpresion creada\n");
+
+    // -------------------------------------------------
+    // 2) Crear comando: RECUPERAR prueba
+    // -------------------------------------------------
+
+    ListaString listaRecuperar;
+    listaStringCrear(listaRecuperar);
+
+    String r1, r2;
+
+    strCrear(r1);
+    strCrear(r2);
+
+    strCop(r1, (char*)"RECUPERAR");
+    strCop(r2, (char*)"prueba");
+
+    listaStringInsertarElemento(r1, listaRecuperar);
+    listaStringInsertarElemento(r2, listaRecuperar);
+
+    printf("\n[CONTROL] Antes de comandoRecuperar\n");
+
+    comandoRecuperar(listaRecuperar, listaExp);
+
+    printf("\n[CONTROL] Después de comandoRecuperar\n");
+
+    // -------------------------------------------------
+    // 3) Crear comando: MOSTRAR
+    // -------------------------------------------------
+
+    ListaString listaMostrar;
+    listaStringCrear(listaMostrar);
+
+    String m1;
+    strCrear(m1);
+
+    strCop(m1, (char*)"MOSTRAR");
+
+    listaStringInsertarElemento(m1, listaMostrar);
+
+    printf("\n[CONTROL] Ejecutando comandoMostrar\n");
+
+    comandoMostrar(listaMostrar, listaExp);
+
+    // -------------------------------------------------
+    // 4) Liberar memoria
+    // -------------------------------------------------
+
+    listaStringDestruir(listaRecuperar);
+    listaStringDestruir(listaMostrar);
+
+    strDestruir(r1);
+    strDestruir(r2);
+    strDestruir(m1);
+
+    listaExpresionDestruir(listaExp);
+
+    printf("\n[OK] Memoria liberada\n");
 }

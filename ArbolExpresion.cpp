@@ -275,7 +275,6 @@ void arbolExpresionBajarAux(ArbolExpresion a, FILE * f)
     if (a != NULL)
     {
         int indice;
-        printf("\nEscribiendo nodo %d", darNumeroNodo(a));
         terminoBajar(a->info, f);
         indice = darNumeroNodo(a);
         fwrite (&indice, sizeof(int), 1, f);
@@ -289,26 +288,9 @@ void arbolExpresionBajarAux(ArbolExpresion a, FILE * f)
 void arbolExpresionBajar(ArbolExpresion a, String nomArch)
 {
     FILE *f = fopen(nomArch, "wb");
-
-    if (f == NULL) {
-        printf("\nERROR: no se pudo abrir el archivo\n");
-        return;
-    }
-
-    if (a == NULL) {
-        printf("\nERROR: el arbol recibido es NULL\n");
-        fclose(f);
-        return;
-    }
-
-    printf("\nArchivo abierto correctamente\n");
-    printf("Arbol no nulo, comenzando escritura...\n");
-
     arbolExpresionBajarAux(a, f);
     fclose(f);
 
-    arbolExpresionBajarAux(a, f);
-    fclose(f);
 }
 
 // Abre el archivo para lectura e inserta en el árbol todos los
@@ -325,11 +307,12 @@ void arbolExpresionLevantar(ArbolExpresion &a, String nomArch)
     arbolExpresionInsertarTermino(a, terBuffer, indice);
     while (!feof(f))
     {
-        //arbolExpresionInsertarTermino(a, terBuffer);
         terminoLevantar(terBuffer, f);
+        if(!feof(f)){
         fread(&indice,sizeof(int),1,f);
         arbolExpresionInsertarTermino(a, terBuffer, indice);
+        }
     }
+    
     fclose(f);
-    //arbolExpresionIndizar(a, indice);
 }
