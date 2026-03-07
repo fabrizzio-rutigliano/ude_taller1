@@ -1,34 +1,36 @@
-# include "ListaString.h"
-# include "ListaExpresion.h"
-# include "Archivos.h"
-# include "TipoError.h"
+#ifndef COMANDO_H_INCLUDED
+#define COMANDO_H_INCLUDED
 
-//GL
+#include "ListaString.h"
+#include "ListaExpresion.h"
+#include "Archivos.h"
+#include "TipoError.h"
+
+//Comando Simple
 void comandoSimple(ListaString listaStr, ListaExpresion &listaExp);
 
-//GL
+//Comando Compuesta
 void comandoCompuesta(ListaString listaStr, ListaExpresion &listaExp);
 
-//GP
+//Comando Calcular
 void comandoCalcular(ListaString lstring, ListaExpresion listaExp);
 
-//GP
+//Comando Iguales
 void comandoIguales(ListaString lstring, ListaExpresion listaExp);
 
-//GP
+//Comando Guardar
 void comandoGuardar(ListaString lstring, ListaExpresion listaExp);
 
-//FR
+//Comando Mostrar
 void comandoMostrar(ListaString listaStr, ListaExpresion listaExp);
 
-//FR
+//Comando Salir
 void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &salir);
 
-//FR
+//Comando Recuperar
 void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp);
 
 //SOLO POR MOTIVOS DE TESTING
 void procesarEntrada(ListaString &lista, String entrada);
 
-
-
+#endif // COMANDO_H_INCLUDED

@@ -1,6 +1,5 @@
 #ifndef TIPOERROR_H_INCLUDED
 #define TIPOERROR_H_INCLUDED
-
 #include <stdio.h>
 
 typedef enum {

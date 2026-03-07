@@ -25,13 +25,20 @@ Termino terminoCrearOperador(TipoTermino tipoTermino, char op);
 // Devolver valor del termino según su discriminante.
 void terminoDesplegarTermino(Termino termino);
 
-// Auxiliares de dar
+// Devuelve el valor del termino
+//Precondicion: el tipo termino es VALOR
 int terminoDarValor(Termino termino);
 
+// Devuelve la variable del termino
+//Precondicion: el tipo termino es VARIABLE
 char terminoDarVariable(Termino termino);
 
+// Devuelve el operador del termino
+//Precondicion: el tipo termino es OPERADOR
 char terminoDarOperador(Termino termino);
 
+// Devuelve el parentisis del termino
+//Precondicion: el tipo termino es PARENTESIS
 char terminoDarParentesis(Termino termino);
 
 //Persiste al archivo el termino
