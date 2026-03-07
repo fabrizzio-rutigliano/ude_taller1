@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "Comandos.h"
 
-void testComandosModulo()
+void testComandosMostrarCalcularModulo()
 {
     //crear listaString
 
@@ -16,8 +16,6 @@ void testComandosModulo()
     char entradaCalcular2[] = "calcular 5 1";
     listaStringCrear(lista);
     listaStringSplit(entrada, lista);
-    
-    
 
     //crear listaExpresion
 
@@ -30,13 +28,19 @@ void testComandosModulo()
     printf("\n-----------------------------Testing comando mostrar-----------------------------------\n\n");
     procesarEntrada(lista, entrada);
     comandoSimple(lista, lisExp);
-    printf("\nSe cargo usando comando simple, la listaExpresion en posicion 1, con... \n");
-    arbolExpresionDesplegarArbol(expresionDevolverArbolExpresion(listaExpresionDevolverExpresionXIndice(lisExp,1)));
-    printf("\n-------------Fin test comando simple---------------\n");
+    //arbolExpresionDesplegarArbol(expresionDevolverArbolExpresion(listaExpresionDevolverExpresionXIndice(lisExp,1)));
+
+    //segunda entrada
+    procesarEntrada(lista, entrada2);
+    comandoSimple(lista, lisExp);
+    procesarEntrada(lista, entradaMostrar);
+    comandoMostrar(lista, lisExp);
+
+    printf("\n-------------Fin test comando mostrar---------------\n");
 
     //Testing comando Compuesta
     //------------------------------------------------------------------------------------------------------------------------
-    printf("\n-----------------------------Testing comando Compuesto-----------------------------------\n\n");
+    printf("\n-----------------------------Testing comando Calcular-----------------------------------\n\n");
 
     procesarEntrada(lista, entradaComponer);
     comandoCompuesta(lista, lisExp);
