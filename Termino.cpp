@@ -73,33 +73,38 @@ void terminoDesplegarTermino(Termino termino){
 
 // Precondición: El archivo viene abierto para escritura.
 void terminoBajar(Termino term, FILE * f ){
+    
+    fwrite(&term.discriminante, sizeof(TipoTermino), 1, f);
+
     if(term.discriminante == VALOR){
-        fwrite (&term.dato.valor, sizeof(int), 1, f);
-    }else{
-        fwrite (&term.dato.variable, sizeof(char), 1, f);
+        fwrite(&term.dato.valor, sizeof(int), 1, f);
+    }
+    else if(term.discriminante == VARIABLE){
+        fwrite(&term.dato.variable, sizeof(char), 1, f);
+    }
+    else if(term.discriminante == OPERADOR){
+        fwrite(&term.dato.operador, sizeof(char), 1, f);
+    }
+    else if(term.discriminante == PARENTESIS){
+        fwrite(&term.dato.parentesis, sizeof(char), 1, f);
     }
 }
 
 // Precondición: El archivo viene abierto para lectura.
 void terminoLevantar(Termino &term, FILE * f ){
     
-    String s;
-    strCrear(s);
+    fread(&term.discriminante, sizeof(TipoTermino), 1, f);
 
-    Levantar_String(s, f);
-    if(strEsEntero(s)) {
-        term.discriminante = VALOR;
-        term.dato.valor = strStringToInt(s);
-    }else if(strEsVariable(s)){
-        term.discriminante = VARIABLE;
-        term.dato.variable = strStrToChar(s);
-    }else if(strEsOperador(s)){
-        term.discriminante = OPERADOR;
-        term.dato.operador = strStrToChar(s);
-    }else{
-        term.discriminante = PARENTESIS;
-        term.dato.parentesis = strStrToChar(s);
+    if(term.discriminante == VALOR){
+        fread(&term.dato.valor, sizeof(int), 1, f);
     }
-
-    strDestruir(s);
+    else if(term.discriminante == VARIABLE){
+        fread(&term.dato.variable, sizeof(char), 1, f);
+    }
+    else if(term.discriminante == OPERADOR){
+        fread(&term.dato.operador, sizeof(char), 1, f);
+    }
+    else if(term.discriminante == PARENTESIS){
+        fread(&term.dato.parentesis, sizeof(char), 1, f);
+    }
 }

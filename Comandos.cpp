@@ -324,21 +324,40 @@ void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp)
     else {
 
         // 2) obtener nombre de archivo
-        String nomArch;
+        String strNombre, nomArch;
+        strCrear(strNombre);
         strCrear(nomArch);
-        listaStringObtener(1, listaStr, nomArch);
+
+        // recuperar archivo
+        listaStringObtener(1, listaStr, strNombre);
 
         // 3) validar nombre alfabético
-        if (!strEsAlfabetico(nomArch)) {
+        if (!strEsAlfabetico(strNombre)) {
             tipoErrorDesplegar(ERROR_ARCHIVO_NOMBRE_INVALIDO);
         }
         else {
+            char buffer[MAX];
+            int i = 0;
 
+            while (strNombre[i] != '\0')
+            {
+                buffer[i] = strNombre[i];
+                i++;
+            }
+
+            buffer[i++] = '.';
+            buffer[i++] = 't';
+            buffer[i++] = 'x';
+            buffer[i++] = 't';
+            buffer[i] = '\0';
+
+            strCop(nomArch, buffer);
             // 4) validar que exista el archivo
-            if (!existeArchivo(nomArch)) {
+            if (!existeArchivo(nomArch))
+            {
                 tipoErrorDesplegar(ERROR_ARCHIVO_NO_ENCONTRADO);
             }
-            else {
+            else{
 
                 // 5) levantar árbol desde archivo
                 ArbolExpresion arbol;
@@ -355,9 +374,12 @@ void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp)
                 printf("\nSe recupero correctamente la expresion:\n");
                 expresionMostrar(exp);
                 printf("\n");
+
+                expresionLiberarArbolDeExpresion(exp);
             }
         }
 
         strDestruir(nomArch);
+        strDestruir(strNombre);
     }
 }
