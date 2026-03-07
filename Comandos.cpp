@@ -304,7 +304,6 @@ void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &sali
     }
     else{
         // Liberar memoria
-        listaStringDestruir(listaStr);
         listaExpresionDestruir(listaExp);
         
         printf("\nCerrando programa...\n");

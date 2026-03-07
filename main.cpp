@@ -1,32 +1,8 @@
 #include <stdio.h>
 #include "Comandos.h"
 
-//void testStringModulo(); // definicion auxiliar para poder compilar
-//void testTerminoModulo();
-//void testingModuloArbolExpresion();
-//void testExpresionModulo();
-//void testListaStringModulo();
-//void testListaExpresionModulo();
-//void testComandosMostrarCalcularModulo();
-//void testComandosModulo();
-//void testComandoGuardar();
-
 int main() {
-    
-    // Testeo de modulos
-    //testStringModulo(); 
-    //testTerminoModulo();
-    //testingModuloArbolExpresion();
-    //testExpresionModulo();
-    //testListaStringModulo();
-    //testListaExpresionModulo();
-    // Estructura principal
-    //testComandosMostrarCalcularModulo();
-    //testComandosModulo();
-    //testComandoGuardar();
 
-    
-    
     // Inicializar lista de expresiones
     ListaExpresion listaExp;
     listaExpresionCrear(listaExp);
@@ -34,18 +10,19 @@ int main() {
     // Entrada
     String entrada;
     strCrear(entrada);
-    // Flag de salida para cortar evaluacion
+    
+    // Flag de salida para cortar bucle
     Boolean salir = FALSE;
 
     // String auxiliares para evaluar comando
-    String simple; strCrear(simple); char auxSimple[] = "SIMPLE"; strCop(simple, auxSimple);
-    String compuesta; strCrear(compuesta); char auxComp[] = "COMPUESTA"; strCop(compuesta, auxComp);
-    String calcular; strCrear(calcular); char auxCalc[] = "CALCULAR"; strCop(calcular, auxCalc);
-    String iguales; strCrear(iguales); char auxIguales[] = "IGUALES"; strCop(iguales, auxIguales);
-    String mostrar; strCrear(mostrar); char auxMostrar[] = "MOSTRAR"; strCop(mostrar, auxMostrar);
-    String guardar; strCrear(guardar); char auxGuardar[] = "GUARDAR"; strCop(guardar, auxGuardar);
-    String recuperar; strCrear(recuperar); char auxRecuperar[] = "RECUPERAR"; strCop(recuperar, auxRecuperar);
-    String salir_str; strCrear(salir_str); char auxSalir[] = "SALIR"; strCop(salir_str, auxSalir);
+    String simple; strCrear(simple); char auxSimple[] = "simple"; strCop(simple, auxSimple);
+    String compuesta; strCrear(compuesta); char auxComp[] = "compuesta"; strCop(compuesta, auxComp);
+    String calcular; strCrear(calcular); char auxCalc[] = "calcular"; strCop(calcular, auxCalc);
+    String iguales; strCrear(iguales); char auxIguales[] = "iguales"; strCop(iguales, auxIguales);
+    String mostrar; strCrear(mostrar); char auxMostrar[] = "mostrar"; strCop(mostrar, auxMostrar);
+    String guardar; strCrear(guardar); char auxGuardar[] = "guardar"; strCop(guardar, auxGuardar);
+    String recuperar; strCrear(recuperar); char auxRecuperar[] = "recuperar"; strCop(recuperar, auxRecuperar);
+    String salir_str; strCrear(salir_str); char auxSalir[] = "salir"; strCop(salir_str, auxSalir);
 
     while (!salir) {
 
@@ -61,23 +38,15 @@ int main() {
             ListaString listaStr;
             listaStringCrear(listaStr);
             listaStringSplit(entrada, listaStr);
+            
+            // Paso 3: obtener comando
+            String cmd;
+            strCrear(cmd);
+            listaStringObtener(0, listaStr, cmd);
 
-            if (listaStringCantElementos(listaStr) == 0) {//este if no va
-                tipoErrorDesplegar(ERROR_LINEA_VACIA);
-                listaStringDestruir(listaStr);
-            }
-            else {
-
-                // Paso 3: obtener comando
-                String cmd;
-                strCrear(cmd);
-                listaStringObtener(0, listaStr, cmd);
-
-                // Paso 4: validar comando
-                if (!comandoEsValido(cmd)) {
-                    tipoErrorDesplegar(ERROR_COMANDO_DESCONOCIDO);
-                    strDestruir(cmd);
-                    listaStringDestruir(listaStr);
+            // Paso 4: validar comando
+            if (!comandoEsValido(cmd)) {
+                tipoErrorDesplegar(ERROR_COMANDO_DESCONOCIDO);
                 }
                 else {
 
@@ -104,18 +73,14 @@ int main() {
                         comandoRecuperar(listaStr, listaExp);
                     }
                     else if (strEq(cmd, salir_str)) {
-                        // comandoSalir destruye listaStr y listaExp, y setea salir=TRUE si todo ok.
-                        comandoSalir(listaStr, listaExp, salir);
-                    }
-                        // Si no se indica salir, entonces hay que liberar lista string para volverla a crear con otra entrada del usuario.
-                    if (!salir){
-                        listaStringDestruir(listaStr);
-                    }
-                    strDestruir(cmd);
+                        // comandoSalir destruye listaExp, y setea salir=TRUE si todo ok.
+                        comandoSalir(listaStr ,listaExp, salir);
+                    }   
                 }
-            }
+            // Liberacion de memoria para siguente iteracion
+            listaStringDestruir(listaStr);
+            strDestruir(cmd);
         }
-    // verificar esto strDestruir(entrada);
     }
 
 
@@ -129,6 +94,4 @@ int main() {
     strDestruir(guardar);
     strDestruir(recuperar);
     strDestruir(salir_str);
-
-    
 }
