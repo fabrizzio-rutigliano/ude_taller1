@@ -90,20 +90,3 @@ int listaStringCantElementos(ListaString lista){
     }
     return count;
 }
-
-//Despliega la listaString completa - solo por motivos de testing - 
-void listaStringDesplegar(ListaString lista){
-    ListaString aux = lista;
-    String enter;
-    strCrear(enter);
-    char auxEnter[] = "\n";
-    strCop(enter, auxEnter);
-
-    while (aux != NULL)
-    {
-
-       strPrint(aux->palabra);
-       strPrint(enter);
-       aux = aux->sig;
-    }
-}

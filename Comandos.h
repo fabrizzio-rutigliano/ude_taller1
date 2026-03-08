@@ -30,7 +30,4 @@ void comandoSalir(ListaString &listaStr, ListaExpresion &listaExp, Boolean &sali
 //Comando Recuperar
 void comandoRecuperar(ListaString listaStr, ListaExpresion &listaExp);
 
-//SOLO POR MOTIVOS DE TESTING
-void procesarEntrada(ListaString &lista, String entrada);
-
 #endif // COMANDO_H_INCLUDED

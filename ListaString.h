@@ -30,7 +30,4 @@ void listaStringObtener(int indice, ListaString lista, String &str);
 //Retorna la cantidad de elementos de lista
 int listaStringCantElementos(ListaString lista);
 
-//Despliega la listaString completa - solo por motivos de testing - 
-void listaStringDesplegar(ListaString lista);
-
 #endif // LISTASTRING_H_INCLUDED
