@@ -220,39 +220,60 @@ int arbolExpresionEvaluar(ArbolExpresion arbol, int val, Boolean &errorCero)
 }
 
 
+
 Boolean arbolExpresionIguales(ArbolExpresion arbol1, ArbolExpresion arbol2)
 {
     if(arbol1==NULL && arbol2==NULL)
         return TRUE;
-    if(arbol1==NULL && arbol2==NULL)
+    else if(arbol1==NULL || arbol2==NULL)
         return FALSE;
-    if(arbol1->info.discriminante != arbol2->info.discriminante)
+    else if(arbol1->info.discriminante != arbol2->info.discriminante)
         return FALSE;
-    if(arbol1->info.discriminante == arbol2->info.discriminante)
+    else if(arbol1->info.discriminante == arbol2->info.discriminante)
     {
         switch (arbol1->info.discriminante)
         {
             case VALOR:
                 if(arbol1->info.dato.valor == arbol2->info.dato.valor)
-                    return TRUE;
-                else
+                {     
+                    if ((arbolExpresionIguales(arbol1->hizq, arbol2->hizq) && arbolExpresionIguales(arbol1->hder, arbol2->hder)) == TRUE)
+                        return TRUE;
+                    else 
+                        return FALSE;
+                }
+                else 
                     return FALSE;
                 break;
             case VARIABLE:
                 if(arbol1->info.dato.variable == arbol2->info.dato.variable)
-                    return TRUE;
+                {     
+                    if ((arbolExpresionIguales(arbol1->hizq, arbol2->hizq) && arbolExpresionIguales(arbol1->hder, arbol2->hder)) == TRUE)
+                        return TRUE;
+                    else 
+                        return FALSE;
+                }
                 else 
                     return FALSE;
                 break;
             case OPERADOR:
                 if(arbol1->info.dato.operador == arbol2->info.dato.operador)
-                    return TRUE;
+                {     
+                    if ((arbolExpresionIguales(arbol1->hizq, arbol2->hizq) && arbolExpresionIguales(arbol1->hder, arbol2->hder)) == TRUE)
+                        return TRUE;
+                    else 
+                        return FALSE;
+                }
                 else 
                     return FALSE;
                 break;
             case PARENTESIS:
                 if(arbol1->info.dato.parentesis == arbol2->info.dato.parentesis)
-                    return TRUE;
+                {     
+                    if ((arbolExpresionIguales(arbol1->hizq, arbol2->hizq) && arbolExpresionIguales(arbol1->hder, arbol2->hder)) == TRUE)
+                        return TRUE;
+                    else 
+                        return FALSE;
+                }
                 else 
                     return FALSE;
                 break;
@@ -262,10 +283,7 @@ Boolean arbolExpresionIguales(ArbolExpresion arbol1, ArbolExpresion arbol2)
 
     }
     
-    if (arbolExpresionIguales(arbol1->hizq, arbol2->hizq) == arbolExpresionIguales(arbol1->hder, arbol2->hder) == TRUE)
-        return TRUE;
-    else 
-        return FALSE;
+   
 }
 
 // Escribe en el archivo los datos de todos los enteros del árbol
