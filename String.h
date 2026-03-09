@@ -43,12 +43,6 @@ void Levantar_String (String &s, FILE * f);
 //Valida si el string s es vacio
 Boolean strEsVacio(String s);
 
-//Transforma un entero a un String
-void strIntToStr(int num, String &s);
-
-//Transforma un char a un String
-void strCharToStr(char p, String &s);
-
 //Transforma un String a un entero
 //Precondicion el String es un entero
 int strStringToInt(String s);

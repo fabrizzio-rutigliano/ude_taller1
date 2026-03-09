@@ -282,8 +282,10 @@ Boolean arbolExpresionIguales(ArbolExpresion arbol1, ArbolExpresion arbol2)
         }
 
     }
-    
-   
+    else
+    {
+        return FALSE;
+    }
 }
 
 // Escribe en el archivo los datos de todos los enteros del árbol

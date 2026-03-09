@@ -120,67 +120,6 @@ Boolean strEsVacio(String s){
     return result;
 }
 
-//Transforma un entero a un String
-void strIntToStr(int num, String &s){
-    String aux;
-    int i = 0;
-    Boolean negativo = FALSE;
-    aux = new char[MAX];
-
-    if (num < 0)
-    {
-        negativo = TRUE;
-        num = -num;
-    }
-
-    // caso si num es cero
-    if (num == 0)
-    {
-        aux[i++] = '0';
-    }
-    else
-    {
-        while (num > 0)
-        {
-            aux[i++] = (num % 10) + '0';
-            num = num / 10;
-        }
-    }
-
-    if (negativo == TRUE)
-        aux[i++] = '-';
-
-    aux[i] = '\0';
-
-    // lo cargue invertido ahora lo dejo en orden correcto
-    int ini = 0;
-    int fin = i - 1;
-    while (ini < fin)
-    {
-        char c = aux[ini];
-        aux[ini] = aux[fin];
-        aux[fin] = c;
-        ini++;
-        fin--;
-    }
-
-    strCop(s, aux);
-    delete[] aux;
-}
-
-//Transforma un char a un String
-void strCharToStr(char p, String &s){
-    
-    // Liberar memoria previa si ya estaba asignada
-    if (s != NULL){
-        delete[] s;
-    }
-    
-    s = new char[2];
-    s[0] = p;
-    s[1] = '\0';
-}
-
 //Transforma un String a un entero
 //Precondicion el String es un entero
 int strStringToInt(String s)
