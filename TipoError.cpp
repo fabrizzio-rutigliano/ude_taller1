@@ -16,13 +16,13 @@ void tipoErrorDesplegar(TipoError e) {
             printf("Comando desconocido.\n");
             printf("Verifique que el nombre del comando este bien escrito.\n");
             printf("\nEjemplos de comandos validos:\n");
-            printf("  - SIMPLE\n");
-            printf("  - COMPUESTA\n");
-            printf("  - CALCULAR\n");
-            printf("  - IGUALES\n");
-            printf("  - GUARDAR\n");
-            printf("  - RECUPERAR\n");
-            printf("  - SALIR\n");
+            printf("  - simple\n");
+            printf("  - compuesta\n");
+            printf("  - calcular\n");
+            printf("  - iguales\n");
+            printf("  - guardar\n");
+            printf("  - recuperar\n");
+            printf("  - salir\n");
             break;
 
         // ---------------- Parametros --------------
